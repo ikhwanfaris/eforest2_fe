@@ -1,0 +1,280 @@
+<app-pre-navbar>
+    <div class="site_container" style="height: 100%">
+        <div class="home_container">
+            <div class="banner_container">
+                <div class="banner_title">
+                    {{ "PARTNER_TITLE_1" | translate }}<br />{{ "PARTNER_TITLE_2" | translate }}
+                </div>
+            </div>
+            <div class="tab_container">
+                <div class="tree_tab" (click)="smoothScrollingTo('lovetree')">
+                    <img src="../../../assets/images/icon-love-tree.png" />
+                    <div>
+                        <b>{{'LOVE_TREE' | translate}}</b>
+                    </div>
+                    <div>
+                        {{'>'}}
+                    </div>
+                </div>
+                <div class="tree_tab" (click)="smoothScrollingTo('earthtree')">
+                    <img src="../../../assets/images/icon-earth-tree.png" />
+                    <div>
+                        <b>{{'EARTH_TREE' | translate}}</b>
+                    </div>
+                    <div>
+                        {{'>'}}
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div id="lovetree">
+                <ion-row>
+                    <ion-col sizeLg="10" offsetLg="1">
+                        <div class="content_container">
+                            <div class="content_title">
+                                <img src="../../../assets/images/icon-love-tree.png" />
+                                <div>
+                                    <b>{{'LOVE_TREE' | translate}}</b>
+                                </div>
+                            </div>
+                            <div class="content_body reverse_body">
+                                <div class="content_desc">
+                                    {{ "LOVE_TREE_PARTNER_DESC_1" | translate }}
+                                </div>
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-love-story-1.png" />
+                                </div>
+                            </div>
+                            <div class="content_body normal_body">
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-love-story-2.png" />
+                                </div>
+                                <div class="content_desc">
+                                    {{ "LOVE_TREE_PARTNER_DESC_2" | translate }}
+                                </div>
+                            </div>
+                            <div class="content_body reverse_body">
+                                <div class="content_desc">
+                                    {{ "LOVE_TREE_PARTNER_DESC_3" | translate }}
+                                </div>
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-love-story-3.png" />
+                                </div>
+                            </div>
+                            <div class="content_body normal_body">
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-love-story-4.png" />
+                                </div>
+                                <div class="content_desc">
+                                    {{ "LOVE_TREE_PARTNER_DESC_4" | translate }}
+                                </div>
+                            </div>
+                            <div class="content_ending">
+                                {{ "LOVE_TREE_PARTNER_DESC_5" | translate }}
+                            </div>
+                            <br />
+                            <br />
+                            <div class="buynow_container">
+                                <ion-row>
+                                    <ion-col sizeXs="12" sizeMd="6">
+                                        <div class="buynow">
+                                            <img width="120" src="../../../assets/images/partners/img-buy-seed.png" />
+                                            <br />
+                                            <br />
+                                            <div style="max-width: 300px; margin: auto">
+                                                {{ "PARTNER_BUYNOW_1" | translate }}
+                                            </div>
+                                            <div class="login_btn" style="margin: 15px auto">
+                                                <button class="nav_btn">
+                          <a
+                            [routerLink]="['/login']"
+                            style="text-decoration: none"
+                          >
+                            {{ "BUY_NOW" | translate }}</a
+                          >
+                        </button>
+                                            </div>
+                                        </div>
+                                    </ion-col>
+                                    <ion-col sizeXs="12" sizeMd="6">
+                                        <div class="buynow">
+                                            <img width="120" src="../../../assets/images/partners/img-send-love-tree.png" />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <div>{{ "PARTNER_BUYNOW_2" | translate }}</div>
+                                            <div class="login_btn" style="margin: 15px auto">
+                                                <button class="nav_btn">
+                          <a
+                            [routerLink]="['/login']"
+                            style="text-decoration: none"
+                          >
+                            {{ "SEND_NOW" | translate }}</a
+                          >
+                        </button>
+                                            </div>
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <br /><br />
+                <div class="partner_container">
+                    <div class="partner_title">
+                        {{ "OUR_PARTNER" | translate }}<br /> {{ "SANKALPTARU" | translate }}
+                    </div>
+                    <br /><br />
+                    <ion-row>
+                        <ion-col sizeLg="12">
+                            <section class="sankalptaru_splide splide" role="group" aria-label="Splide Basic HTML Example">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-sankalptaru-1.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-sankalptaru-2.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-sankalptaru-3.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-sankalptaru-4.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-sankalptaru-5.png" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+
+            <div id="earthtree">
+                <ion-row>
+                    <ion-col sizeLg="10" offsetLg="1">
+                        <br /><br />
+                        <div class="content_container">
+                            <div class="content_title">
+                                <img src="../../../assets/images/icon-earth-tree.png" />
+                                <div>
+                                    <b>{{'EARTH_TREE' | translate}}</b>
+                                </div>
+                            </div>
+                            <div class="content_body reverse_body">
+                                <div class="content_desc">
+                                    {{ "EARTH_TREE_PARTNER_DESC_1" | translate }}
+                                </div>
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-earth-story-1.png" />
+                                </div>
+                            </div>
+                            <div class="content_body normal_body">
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-earth-story-2.png" />
+                                </div>
+                                <div class="content_desc">
+                                    {{ "EARTH_TREE_PARTNER_DESC_2" | translate }}
+                                </div>
+                            </div>
+                            <div class="content_body reverse_body">
+                                <div class="content_desc">
+                                    {{ "EARTH_TREE_PARTNER_DESC_3" | translate }}
+                                </div>
+                                <div class="content_image">
+                                    <img src="../../../assets/images/partners/img-earth-story-3.png" />
+                                </div>
+                            </div>
+
+                            <div class="content_ending">
+                                {{ "EARTH_TREE_PARTNER_DESC_4" | translate }}
+                            </div>
+                            <br />
+                            <br />
+                            <div class="buynow_container">
+                                <ion-row>
+                                    <ion-col sizeXs="12" sizeMd="6">
+                                        <div class="buynow">
+                                            <img width="120" src="../../../assets/images/partners/img-buy-seed.png" />
+                                            <br />
+                                            <br />
+                                            <div style="max-width: 300px; margin: auto">
+                                                {{ "PARTNER_BUYNOW_1" | translate }}
+                                            </div>
+                                            <div class="login_btn" style="margin: 15px auto">
+                                                <button class="nav_btn">
+                          <a
+                            [routerLink]="['/login']"
+                            style="text-decoration: none"
+                          >
+                            {{ "BUY_NOW" | translate }}</a
+                          >
+                        </button>
+                                            </div>
+                                        </div>
+                                    </ion-col>
+                                    <ion-col sizeXs="12" sizeMd="6">
+                                        <div class="buynow">
+                                            <img width="120" src="../../../assets/images/partners/img-send-earth-tree.png" />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <div>{{ "PARTNER_BUYNOW_3" | translate }}</div>
+                                            <div class="login_btn" style="margin: 15px auto">
+                                                <button class="nav_btn">
+                          <a
+                            [routerLink]="['/login']"
+                            style="text-decoration: none"
+                          >
+                            {{ "SEND_NOW" | translate }}</a
+                          >
+                        </button>
+                                            </div>
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <br /><br />
+                <div class="partner_container" style="background: #94bc7d;">
+                    <div class="partner_title">
+                        {{ "OUR_PARTNER" | translate }}<br /> {{ "EDEN_REFORESTATION_PROJECT" | translate }}
+                    </div>
+                    <br /><br />
+                    <ion-row>
+                        <ion-col sizeLg="12">
+                            <section class="eden_splide splide" role="group" aria-label="Splide Basic HTML Example">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-eden-project-1.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-eden-project-2.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-eden-project-3.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-eden-project-4.png" />
+                                        </li>
+                                        <li class="splide__slide">
+                                            <img src="../../../assets/images/partners/img-eden-project-5.png" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</app-pre-navbar>

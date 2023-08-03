@@ -1,0 +1,14 @@
+<ion-list *ngIf="languageList">
+    <div class="lang_bar">
+        <div class="lang_title">{{ "CHANGE_LANG" | translate }}</div>
+        <ion-button fill="clear" slot="end" (click)="onDismiss()">
+            <ion-icon color="dark" name="close"></ion-icon>
+        </ion-button>
+    </div>
+    <ng-container *ngFor="let lang of languageList">
+        <div class="language_container" *ngIf="lang.active" (click)="changeLang(lang.lang)">
+            <img style="max-width: 32px" [src]="lang.flag" />
+            <div>{{ lang.name }}</div>
+        </div>
+    </ng-container>
+</ion-list>

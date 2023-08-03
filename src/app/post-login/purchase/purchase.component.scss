@@ -1,0 +1,237 @@
+.package_title {
+    font-size: 32px;
+}
+
+.package_container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 1100px;
+}
+
+.package_desc {
+    font-size: 20px;
+    display: flex;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.package_purchase {
+    background: #e8bf49;
+    padding: 18px 16px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    width: 115px;
+}
+
+.package_purchase:hover {
+    opacity: 0.8;
+}
+
+.package_desc_container .package_desc {
+    justify-content: left;
+    line-height: 1;
+}
+
+.package_selection {
+    text-align: center;
+    font-weight: bold;
+    padding: 12px 0 18px;
+    border-radius: 20px;
+}
+
+.package_desc_container {
+    padding: 12px 0 18px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.package1 {
+    background: #d6d286;
+}
+
+.package2 {
+    background: #738700;
+    color: #fff;
+}
+
+.package3 {
+    background: #38720c;
+    color: #fff;
+}
+
+.package4 {
+    background: #366006;
+    color: #fff;
+}
+
+.package5 {
+    background: #16402a;
+    color: #fff;
+}
+
+.huge_text {
+    font-size: 32px;
+    font-family: "Grandstander", cursive;
+}
+
+ion-toolbar {
+    --background: transparent;
+}
+
+ion-modal {
+    --height: 90%;
+    --width: 90%;
+}
+
+ion-modal.seed_planted_container {
+    --height: 500px !important;
+    --width: 600px !important;
+}
+
+input {
+    text-align: center;
+    border: 1px solid #6c757d;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield !important;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.wrapper {
+    width: 90%;
+    padding: 2px 6px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-around;
+    background: white;
+    margin: 12px auto;
+    border: 1px #dcd3d3 solid;
+    align-items: center;
+    max-width: 115px;
+}
+
+.plusminus {
+    padding: 0;
+    background: #fff;
+}
+
+.plusminus ion-icon {
+    border: none;
+    color: black;
+    font-size: 15px;
+    // color: #5f5fce;
+}
+
+.plusminus ion-icon:hover {
+    opacity: 0.6;
+}
+
+.num {
+    // height: 42px;
+    width: 39%;
+    border-left: 1px solid #cbcbcbd9;
+    border-right: 1px solid #cbcbcbd9;
+    border-top: none;
+    border-bottom: none;
+    font-size: 24px;
+    font-weight: 500;
+    height: 42px;
+    color: #000;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.minus {
+    color: black;
+}
+
+.add {
+    color: black;
+}
+
+.purchase-btn {
+    margin-bottom: 15px;
+}
+
+.project_subtitle {
+    font-family: "Grandstander", cursive;
+    font-size: 40px;
+    margin: 0 auto 20px;
+    //font-family: "Source Sans Pro", sans-serif;
+}
+
+.main_seed_container {
+    padding: 0 15px;
+}
+
+.seed_container {
+    font-size: 19px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.packages-seed {
+    padding-bottom: 12px;
+}
+
+.button_submit {
+    font-size: 18px;
+    background-color: #f6c03a;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 15px;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 250px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: auto auto 30px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 4px 4px 2px 0px #413c3c7d;
+    border: 1px solid #000000;
+    color: #000000;
+}
+
+button.btn_login:disabled {
+    opacity: 0.6;
+}
+
+.seed_planted_container .site_container {
+    background: url(../../../assets/images/bg-register-and-login-page.png);
+    ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.btn {
+    text-align: center;
+}
+
+.packages-seed {
+    font-size: 22px;
+}
+
+@media (max-width: 480px) {
+    ion-modal.seed_planted_container {
+        --height: 90% !important;
+        --width: 90% !important;
+    }
+    .seed_container {
+        font-size: 16px;
+        font-family: "Source Sans Pro", sans-serif;
+    }
+    .packages-seed {
+        font-size: 17px;
+    }
+}

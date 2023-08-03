@@ -1,0 +1,194 @@
+<ng-template #packageTemplate let-pkg let-isPlanted="isPlanted">
+  <div class="packages">
+    <div
+      class="watered_reminder bounce"
+      *ngIf="isPlanted && !pkg.watered_today"
+    >
+      <img src="../../assets/images/planting/06 img_3.png" />
+    </div>
+    <div class="package_image">
+      <img [src]="getPackageImages(isPlanted, pkg.day_count)" />
+    </div>
+    <div class="package_container">
+      <div
+        class="package_type"
+        [style.color]="getPackageColor(pkg.package_name)"
+      >
+        {{ pkg.package_name }}
+      </div>
+      <div class="package_desc_container">
+        <div class="desc_container">
+          <div class="package_desc">
+            {{ "REF" | translate }}
+          </div>
+          <div class="package_val">
+            {{ pkg.package_ref }}
+          </div>
+        </div>
+        <div class="desc_container">
+          <div class="package_desc">
+            {{ "DAYS" | translate }}
+          </div>
+          <div class="package_val">
+            {{ pkg.day_count }}
+          </div>
+        </div>
+      </div>
+      <div class="package_desc_container">
+        <div class="desc_container">
+          <div class="package_desc">
+            {{ "BASKET" | translate }}
+          </div>
+          <div class="package_val">
+            {{ pkg.paid_out_amount }}
+          </div>
+        </div>
+        <div class="desc_container">
+          <div class="package_desc">
+            {{ "DFR" | translate }}
+          </div>
+          <div class="package_val">
+            {{
+              pkg.day_count >= 31
+                ? (pkg.dsr | currency : " " : "symbol" : "0.0-2")
+                : "0.00"
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="package_title">
+  <b>{{ "MY_EFOREST" | translate }}</b>
+</div>
+<br /><br />
+
+<ng-container *ngIf="not_planted_length == 0 && planted_length == 0">
+  <div>{{ "NO_PACKAGES_FOUND" | translate }}</div>
+</ng-container>
+
+<ion-accordion-group #notPlantedAccordion id="notPlantedAccordion">
+  <ion-accordion value="notPlanted">
+    <ion-item slot="header">
+      <ion-label class="package_subtitle"
+        >{{ "NOT_PLANTED" | translate }}
+        <!-- (<span style="color: rgb(50, 132, 89)">{{ not_planted.length }}</span>) -->
+      </ion-label>
+    </ion-item>
+    <ng-container *ngIf="not_planted_length > 0">
+      <div class="package_list" slot="content">
+        <ion-row>
+          <ion-col
+            *ngFor="let pkg of not_planted"
+            sizeXl="3"
+            sizeMd="4"
+            sizeSm="6"
+            sizeXs="12"
+          >
+            <div
+              (click)="
+                loadFarm(
+                  pkg.package_ref,
+                  false,
+                  pkg.day_count,
+                  pkg.paid_out_amount,
+                  pkg.package_name
+                )
+              "
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  packageTemplate;
+                  context: { $implicit: pkg, isPlanted: 0 }
+                "
+              >
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-container>
+  </ion-accordion>
+</ion-accordion-group>
+
+<br />
+<ion-accordion-group #plantedAccordion id="plantedAccordion">
+  <ion-accordion value="planted">
+    <ion-item slot="header" [counter]="true">
+      <ion-label class="package_subtitle"
+        >{{ "PLANTED" | translate }}
+      </ion-label>
+      <!-- <ion-button class="germinate_btn" slot="end" (click)="germinateAll()">{{ "GERMINATE_ALL" | translate }}
+            </ion-button> -->
+    </ion-item>
+    <ng-container *ngIf="planted_length > 0">
+      <div class="package_list" slot="content">
+        <div class="explaination_footer">
+          <span style="color: red">*</span> DFR = {{ "DFR_DESC" | translate }}
+        </div>
+
+        <div class="all_btn">
+          <button
+            class="button_desc"
+            slot="end"
+            (click)="germinateAll()"
+            [disabled]="isGerminateDisable"
+          >
+            {{ "WATER_ALL" | translate }}
+          </button>
+          <button
+            class="button_desc"
+            slot="end"
+            (click)="waterAll()"
+            [disabled]="isWaterDisable"
+          >
+            {{ "DFR_ALL" | translate }}
+          </button>
+        </div>
+
+        <ion-row>
+          <ion-col
+            *ngFor="let pkg of planted"
+            sizeXl="3"
+            sizeMd="4"
+            sizeSm="6"
+            sizeXs="12"
+          >
+            <div
+              (click)="
+                loadFarm(
+                  pkg.package_ref,
+                  true,
+                  pkg.day_count,
+                  pkg.paid_out_amount,
+                  pkg.package_name
+                )
+              "
+            >
+              <ng-container
+                *ngTemplateOutlet="
+                  packageTemplate;
+                  context: { $implicit: pkg, isPlanted: 1 }
+                "
+              >
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-container>
+  </ion-accordion>
+</ion-accordion-group>
+
+<br /><br />
+
+<!-- <ion-modal [isOpen]="isGameOpen" backdropDismiss="false" [componentProps]="{ packageRef: 1 }">
+    <ng-template>
+        <ion-button fill="clear" slot="end" (click)="onDismiss()" style="position: absolute; right: 0; z-index: 999">
+            <ion-icon color="dark" name="close"></ion-icon>
+        </ion-button>
+        <app-planting-game style="height: 100%"></app-planting-game>
+    </ng-template>
+</ion-modal> -->

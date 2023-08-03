@@ -1,0 +1,756 @@
+<!-- <ion-content [fullscreen]="true"> -->
+<app-pre-navbar>
+    <div class="site_container">
+        <div class="home_container">
+            <div class="part_one">
+                <ion-row>
+                    <!-- <img class="forest_gif" src="../../../assets/images/bg-top-banner.png"> -->
+                    <ion-col class="ion-text-center">
+                        <div class="world_first">
+                            {{'MOST_MEANINGFUL_GAME' | translate}}
+                        </div>
+                        <br />
+                        <div class="deflationary">
+                            <b>{{ 'eFOREST²' | translate }}</b>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <br />
+                <!-- <div class="container_height"></div> -->
+                <!-- <div style="justify-content: center; display: flex">
+            <img [src]="getGrowTreeTitleLang()" />
+          </div>
+          <br /><br /> -->
+                <ion-row style="justify-content: center">
+                    <div class="start_your_journey">
+                        <!--<img src="../../../assets/images/icon-earth-tree.png" style="margin-right: 16px" /> -->
+                        <div class="total_planted_desc">
+                            {{'START_YOUR_JOURNEY' | translate}}
+                        </div>
+                    </div>
+                </ion-row>
+                <ion-row style="justify-content: center">
+                    <div class="total_planted_container">
+                        <div class="total_planted_title">
+                            <!--<img src="../../../assets/images/icon-earth-tree.png" style="margin-right: 16px" /> -->
+                            <div class="total_planted_desc">
+                                {{'TOTAL_TREE_PLANT' | translate}}
+                            </div>
+                        </div>
+                        <div class="total_planted_value" id="totalTrees">
+                            <b>{{ totalTree}}</b>
+                        </div>
+                    </div>
+                </ion-row>
+                <!-- <div style="height: 100px"></div> -->
+            </div>
+            <div class="part_two">
+                <ion-row>
+                    <ion-col sizeXs="12" sizeMd="10" offsetMd="1" sizeLg="8" offsetLg="2">
+                        <ion-row>
+                            <ion-col class="ion-text-center">
+                                <img class="icon_eforest" src="../../../assets/images/eforest2-icon.png" />
+                                <br />
+                                <br />
+                                <div class="part_title">{{ 'WHAT_HAPPENS' | translate }}</div>
+                                <br />
+                                <h3 class="desc_meet_your_tree">
+                                    {{ 'SAVE_THE_WORLD' | translate }}
+                                </h3>
+                            </ion-col>
+                        </ion-row>
+                        <br />
+                        <ion-row>
+                            <ion-col class="ion-text-center">
+                                <ion-row style="justify-content: center">
+                                    <ion-col sizeXs="12" sizeMd="4">
+                                        <div class="why_own_card">
+                                            {{ 'SIMPLE_TO' | translate }} <br /> {{ 'UNDERSTAND' | translate }}
+                                        </div>
+                                    </ion-col>
+                                    <ion-col sizeXs="12" sizeMd="4">
+                                        <div class="why_own_card">
+                                            {{ 'SAVE_OUR' | translate }}<br /> {{ 'EARTH' | translate }}
+                                        </div>
+                                    </ion-col>
+                                    <ion-col sizeXs="12" sizeMd="4">
+                                        <div class="why_own_card">
+                                            {{ 'PLAY_TO' | translate }} <br />{{ 'EARN' | translate }}
+                                        </div>
+                                    </ion-col>
+                                    <!-- <ion-card class="card_seeds">
+                                                  <ion-card-header>
+                                                      <ion-card-title class="button_why" color="light">
+                                                          Simple to Understand</ion-card-title>
+                                                  </ion-card-header>
+                                              </ion-card>
+                                              <ion-card class="card_seeds">
+                                                  <ion-card-header>
+                                                      <ion-card-title class="button_why" color="light">Save Our Earth
+                                                      </ion-card-title>
+                                                  </ion-card-header>
+                                              </ion-card>
+                                              <ion-card class="card_seeds">
+                                                  <ion-card-header>
+                                                      <ion-card-title class="button_why" color="light">Earn While You Play
+                                                      </ion-card-title>
+                                                  </ion-card-header>
+                                              </ion-card> -->
+                                </ion-row>
+                                <br />
+                                <h3 class="desc_meet_your_tree">
+                                    {{ 'BUILD_A_COM' | translate }}
+                                </h3>
+                                <br />
+                                <br />
+                                <ion-row style="justify-content: center">
+                                    <div class="login_btn_1">
+                                        <button class="nav_btn_1">
+                      <a
+                        [routerLink]="['/r']"
+                        style="text-decoration: none; color: black"
+                      >
+                        {{ 'CLICK_TO_OWN_EFOREST_SEED_NOW' | translate }}
+                      </a>
+                    </button>
+                                    </div>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <div class="part_three">
+                <ion-row>
+                    <!-- <img class="forest_gif" src="../../../assets/images/bg-deforestation.png"> -->
+                    <ion-col class="ion-text-center">
+                        <div class="part_title">{{ 'DEFORESTATION' | translate }}</div>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-text-center">
+                        <div class="desc_meet_your_tree_1">
+                            {{ 'DEFORESTATION_REFER' | translate }}
+                            <br />{{ 'DEFORESTATION_KILLS' | translate }} <br />{{ 'WE_MUST_PROTECT' | translate }}
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <br /><br />
+                <ion-row style="justify-content: center">
+                    <!-- <ion-col size="1"> </ion-col> -->
+                    <!-- <ion-col size="10" style="text-align: center"> -->
+                    <iframe class="newsframe" src="https://www.youtube.com/embed/fHI1JLNc2eA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <!-- <img src="../../assets/images/video.png"> -->
+                    <!-- </ion-col> -->
+                </ion-row>
+            </div>
+            <div class="part_four">
+                <ion-row>
+                    <!-- <img class="forest_gif" src="../../../assets/images/bg-how-do-we-help.png"> -->
+                    <ion-col sizeLg="10" offsetLg="1" sizeXs="12" class="ion-text-center">
+                        <div class="part_title">{{ 'HOW_DO_WE_HELP' | translate }}</div>
+                    </ion-col>
+                </ion-row>
+                <br />
+                <ion-row>
+                    <ion-col class="ion-text-center">
+                        <div class="desc_meet_your_tree">
+                            {{ 'EFOREST_HAS_A_GOAL' | translate }}
+                            <!-- <br />{{ 'EFOREST_WOULD_LIKE_TO' | translate }} -->
+                        </div>
+                        <!-- <div class="video_inner"> -->
+                        <!-- <iframe src="https://www.youtube.com/embed/nUstYj4o2VQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                        <!-- <img src="../../assets/images/video.png"> -->
+                        <!-- </div> -->
+                    </ion-col>
+                </ion-row>
+                <br />
+                <ion-row>
+                    <ion-col sizeXs="12" sizeMd="12">
+                        <ion-row style="justify-content: center">
+                            <ion-col sizeXs="12" sizeMd="12" sizeLg="3">
+                                <ion-card style="
+                    background: #16402a;
+                    padding: 5px;
+                    height: 100%;
+                    border-radius: 20px;
+                  ">
+                                    <ion-card-header>
+                                        <ion-card-subtitle>
+                                            <img class="icon_eforest_1" src="../../../assets/images/img-Global-Environmental-Crisis.png" />
+                                        </ion-card-subtitle>
+                                        <ion-card-title>
+                                            <br />
+                                            <ion-text class="card_title" color="light">
+                                                <b>{{ 'GLOBAL_ENVIRONMENTAL_CRISIS' | translate }}</b>
+                                            </ion-text>
+                                            <br />
+                                        </ion-card-title>
+                                    </ion-card-header>
+
+                                    <ion-card-content>
+                                        <ion-text class="card_desc" color="light">
+                                            {{ 'EFOREST_HELP_THROUGH_PLANTING' | translate }}
+                                        </ion-text>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+                            <ion-col sizeXs="12" sizeMd="12" sizeLg="3">
+                                <ion-card style="
+                    background: #16402a;
+                    padding: 5px;
+                    height: 100%;
+                    border-radius: 20px;
+                  ">
+                                    <ion-card-header>
+                                        <ion-card-subtitle>
+                                            <img class="icon_eforest_1" src="../../../assets/images/img-Global-Economic-Crisis.png" />
+                                        </ion-card-subtitle>
+                                        <ion-card-title>
+                                            <br />
+                                            <ion-text class="card_title" color="light">
+                                                <b> {{ 'GLOBAL_ECONOMIC_CRISIS' | translate }}</b>
+                                            </ion-text>
+                                            <br />
+                                        </ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content>
+                                        <ion-text class="card_desc" color="light">
+                                            {{ 'THE_BIGGEST_GLOBAL_ECONOMIC' | translate }}
+                                        </ion-text>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+                            <ion-col sizeXs="12" sizeMd="12" sizeLg="3">
+                                <ion-card style="
+                    background: #16402a;
+                    padding: 5px;
+                    height: 100%;
+                    border-radius: 20px;
+                  ">
+                                    <ion-card-header>
+                                        <ion-card-subtitle>
+                                            <img class="icon_eforest_1" src="../../../assets/images/img-Community-Destitution.png" />
+                                        </ion-card-subtitle>
+                                        <ion-card-title>
+                                            <br />
+                                            <ion-text class="card_title" color="light">
+                                                <b>{{ 'COMMUNITY_DESTITUTION' | translate }}</b>
+                                            </ion-text>
+                                            <br />
+                                        </ion-card-title>
+                                    </ion-card-header>
+                                    <ion-card-content>
+                                        <ion-text class="card_desc" color="light">
+                                            {{ 'IT_TAKES_A_VILLAGE_TO' | translate }}
+                                        </ion-text>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+                <br />
+                <div class="login_btn_1" style="margin: 30px auto">
+                    <button class="nav_btn_1">
+            <a
+              [routerLink]="['/r']"
+              style="color: black; text-decoration: none"
+            >
+              {{ 'JOIN_US_NOW'| translate }}</a
+            >
+          </button>
+                </div>
+
+                <!-- <ion-row style="justify-content: center">
+                          <ion-col class="ion-text-center">
+                              <ion-button class="join_us" fill="outline">
+                              </ion-button>
+                          </ion-col>
+                      </ion-row> -->
+            </div>
+
+            <div class="meet-your-tree">
+                <div class="play_to_earn_container">
+                    <div class="title_meet_your_tree">
+                        {{ 'THE_JOURNEY_OF_YOUR_TREE' | translate }}
+                    </div>
+                    <div class="desc_meet_your_tree">
+                        {{ 'EVERY_TREE_HAS_A_STORY' | translate }}
+                    </div>
+                    <div class="meet_your_team_img_container">
+                        <div class="tab_selection_tree">
+                            <div class="tab_selection_container">
+                                <div class="first_tree_col" (click)="clickTree()" [ngClass]="showEarthtree ? '' : 'active'">
+                                    <img src="../../../assets/images/icon-love-tree.png" />
+                                    <span>{{ 'LOVE_TREE' | translate }}</span>
+                                </div>
+                                <div class="first_tree_col second_tree_col" (click)="clickEarthTree()" [ngClass]="showEarthtree ? 'active' : ''">
+                                    <img src="../../../assets/images/icon-earth-tree.png" />
+                                    <span>{{ 'EARTH_TREE' | translate }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ion-row *ngIf="showEarthtree">
+                            <ion-col sizeXs="12">
+                                <div class="desc_meet_your_tree">
+                                    {{ 'WE_HAVE_THE_CAPABILITIES' | translate }}
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="12">
+                                <div class="desc_meet_your_tree">
+                                    {{ 'WE_WANT_TO_EXPERIENCE' | translate }}
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="12">
+                                <div class="img_plant_center">
+                                    <img src="../../../assets/images/img-earth-tree.png" />
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="12">
+                                <div class="login_btn_1" style="margin: auto" [routerLink]="['/partners']">
+                                    <button class="nav_btn_1">{{'READ_MORE' | translate}}</button>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row *ngIf="!showEarthtree">
+                            <ion-col sizeXs="12">
+                                <div class="desc_meet_your_tree">
+                                    {{ 'THIS_LOVE_TREE_INITIATIVE' | translate }}
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="12">
+                                <div class="desc_meet_your_tree">
+                                    {{ 'THESE_TREES_OF_WEALTH' | translate }}
+                                </div>
+                            </ion-col>
+                            <ion-col>
+                                <div class="meet_your_team_img">
+                                    <div>
+                                        <img src="../../assets/images/img-geo-tracking.png" />
+                                    </div>
+                                    <div class="meet_your_team_col">
+                                        {{ 'GEO_TRACKING_OF_TREE' | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="6" sizeMd="3">
+                                <div class="meet_your_team_img">
+                                    <div>
+                                        <img src="../../assets/images/img-real-image-of-tree.png" />
+                                    </div>
+                                    <div class="meet_your_team_col">
+                                        {{ 'REAL_IMAGE_OF_YOUR_TREE' | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="6" sizeMd="3">
+                                <div class="meet_your_team_img">
+                                    <div>
+                                        <img src="../../assets/images/img-facts-and-info-of-tree.png" />
+                                    </div>
+                                    <div class="meet_your_team_col">
+                                        {{ 'FACTS_AND_INFORMATION_OF_TREE' | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="6" sizeMd="3" colset>
+                                <div class="meet_your_team_img">
+                                    <div>
+                                        <img src="../../assets/images/img-trees-on-blockchain.png" />
+                                    </div>
+                                    <div class="meet_your_team_col">
+                                        {{ 'YOUR_TREES_ARE_ALSO_ON' | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="12">
+                                <div class="login_btn_1" style="margin: auto" [routerLink]="['/partners']">
+                                    <button class="nav_btn_1">{{'READ_MORE' | translate}}</button>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <!-- <div class="tree_plated_container">
+                <div class="tree-planted">Trees planted</div>
+                <div class="tree-planted tree-counted">300,018</div>
+              </div> -->
+                    </div>
+
+                    <div class="total_count" style="margin-top: 40px">
+                        <ion-row>
+                            <ion-col sizeXs="12" sizeXl="4" offsetXl="2">
+                                <div class="total_planted_container">
+                                    <div class="total_planted_title">
+                                        <img src="../../../assets/images/icon-love-tree.png" style="margin-right: 16px" />
+                                        <div class="total_planted_desc">
+                                            {{'TOTAL_LOVE_TREE_PLANT' | translate}}
+                                        </div>
+                                    </div>
+                                    <div class="total_planted_value" id="totalLoveTrees">
+                                        <b>{{ TotalCount?.total_love_tree_count }}</b>
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeXs="12" sizeXl="4">
+                                <div class="total_planted_container">
+                                    <div class="total_planted_title">
+                                        <img src="../../../assets/images/icon-earth-tree.png" style="margin-right: 16px" />
+                                        <div class="total_planted_desc">
+                                            {{'TOTAL_EARTH_TREE_PLANT' | translate}}
+                                        </div>
+                                    </div>
+                                    <div class="total_planted_value" id="totalEarthTrees">
+                                        <b>{{ TotalCount?.total_earth_tree_count }}</b>
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </div>
+            </div>
+
+            <div class="play_to_earn_containers">
+                <div class="changing_lives_education">
+                    <ion-row>
+                        <ion-col sizeXs="12" sizeLg="8">
+                            <div class="changing_lives_container">
+                                <div class="play_to_earn_title">
+                                    {{ 'PLAY_TO_EARN' | translate }}
+                                </div>
+                                <div class="play_to_earn_content">
+                                    {{ 'PLAY_TO_EARN_CONTENT' | translate }}
+                                </div>
+                                <div class="play_to_earn_content ion-text-left">
+                                    - {{ 'PASSIVE_EARNING' | translate }}
+                                    <br /><br class="ion-hide-lg-up" /> - {{ 'ACTIVE_EARNING' | translate }}
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col sizeXs="12" sizeLg="4">
+                            <div class="play-to_earn_img">
+                                <div>
+                                    <img style="max-width: 299px" src="../../assets/images/img-play-to-earn.png" />
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+
+            <div class="changing_lives_main_container" style="background-color: #94bc7e">
+                <div class="changing_lives_education">
+                    <ion-row>
+                        <ion-col sizeXs="12" sizeLg="5">
+                            <div class="changing_lives_img">
+                                <div>
+                                    <img style="margin: 0px 60px 12px" src="../../../assets/images/img-fruits-redemption.png" />
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col sizeXs="12" sizeLg="7">
+                            <div class="changing_lives_container">
+                                <div class="changing_lives_title">
+                                    {{ 'SEEDS_REDEMPTION' | translate }}
+                                </div>
+                                <div class="changing_lives_desc">
+                                    {{ 'SEEDS_REDEMPTION_INFO' | translate }}
+                                </div>
+                                <div class="login_btn" style="background: unset">
+                                    <button class="nav_btn" style="background-color: #16402a">
+                    <a
+                      style="text-decoration: unset; color: #fff"
+                      [routerLink]="['/fruits-redemption']"
+                    >
+                      {{ 'REDEEM_NOW' | translate }}
+                    </a>
+                  </button>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+
+            <!-- <div class="play_to_earn">
+          <ion-row>
+            <ion-col sizeXs="12" sizeLg="10" offsetLg="1">
+              <div class="play_to_earn_container">
+                <div class="title_play_to_earn">
+                  <b>{{ 'PLAY_TO_EARN' | translate }}</b>
+                </div>
+                <div class="desc_play_to_earn">
+                  {{ 'PLAY_TO_EARN_CONTENT' | translate }}
+                </div>
+                <br />
+                <div class="desc_play_to_earn">
+                  - {{ 'PASSIVE_EARNING' | translate }}
+                </div>
+                <div class="desc_play_to_earn">
+                  - {{ 'ACTIVE_EARNING' | translate }}
+                </div>
+                <img
+                  src="../../../assets/images/img-play-to-earn.png"
+                  class="ion-hide-lg-up"
+                />
+              </div>
+            </ion-col>
+          </ion-row>
+        </div> -->
+            <div class="changing_lives_main_container">
+                <div class="changing_lives_education">
+                    <ion-row>
+                        <ion-col sizeXs="12" sizeLg="8">
+                            <div class="changing_lives_container">
+                                <div class="changing_lives_title">
+                                    {{ 'EFOREST_INTRO' | translate }}
+                                </div>
+                                <div class="changing_lives_desc">
+                                    {{ 'VIRTUAL_INTRO' | translate }}
+                                </div>
+
+                                <div class="login_btn_1 ion-hide-lg-down">
+                                    <button class="nav_btn_1">
+                    <a style="text-decoration: unset; color: #000">
+                      {{ 'REGISTER_NOW' | translate }}
+                    </a>
+                  </button>
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col sizeXs="12" sizeLg="4">
+                            <div class="changing_lives_img">
+                                <div>
+                                    <img style="max-width: 299px" src="../../assets/images/img-eforest2-introduction.png" />
+                                </div>
+                            </div>
+                        </ion-col>
+                        <div class="login_btn_1 ion-hide-lg-up">
+                            <button class="nav_btn_1">
+                <a style="text-decoration: unset; color: #000">
+                  {{ 'REGISTER_NOW' | translate }}
+                </a>
+              </button>
+                        </div>
+                    </ion-row>
+                </div>
+            </div>
+            <div class="send_a_gift">
+                <div class="send_a_gift_container">
+                    <ion-row>
+                        <ion-col sizeXs="12" sizeLg="4" class="ion-hide-lg-down">
+                            <div class="send_a_gift_img">
+                                <div>
+                                    <img src="../../assets/images/img-send-a-gift.png" />
+                                </div>
+                            </div>
+                        </ion-col>
+                        <ion-col sizeXs="12" sizeLg="8">
+                            <div class="send_a_gift_containers">
+                                <div class="send_a_gift_title">
+                                    {{ 'SEND_A_GIFT' | translate }}
+                                </div>
+                                <div class="send_a_gift_desc">
+                                    {{ 'SEND_AN_EFOREST_TREE_GIFT' | translate }}
+                                </div>
+                                <div class="send_a_gift_img ion-hide-lg-up">
+                                    <div>
+                                        <img src="../../assets/images/img-send-a-gift.png" />
+                                    </div>
+                                </div>
+                                <button class="send_a_gift_btn">
+                  <!-- <a [routerLink]="['/login']"
+                      >{{ 'CLICK_HERE_FOR_MORE_DETAILS' | translate }}
+                    </a> -->
+                  <a>{{ 'COMING_SOON' | translate }} </a>
+                </button>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+            <div class="carousel">
+                <div class="carousel_title">{{ 'START_THE_GAME' | translate }}</div>
+                <br /><br />
+                <div class="carousel_desc">{{ 'BUY_A_SEED_PACKAGE' | translate }}</div>
+                <br />
+                <div class="carousel_slider">
+                    <swiper [config]="swiperConfig" (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)">
+                        <ng-template swiperSlide>
+                            <img src="../../../assets/images/img-start-the-game-steps-1.png" class="swiper_img" /></ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-2.png" class="swiper_img" />
+                        </ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-3.png" class="swiper_img" />
+                        </ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-4.png" class="swiper_img" />
+                        </ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-5.png" class="swiper_img" />
+                        </ng-template>
+                    </swiper>
+                </div>
+                <div class="carousel_slider_mobile">
+                    <swiper [config]="swiperConfig" (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)">
+                        <ng-template swiperSlide>
+                            <img src="../../../assets/images/img-start-the-game-steps-1-m.png" class="swiper_img" /></ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-2-m.png" class="swiper_img" />
+                        </ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-3-m.png" class="swiper_img" />
+                        </ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-4-m.png" class="swiper_img" />
+                        </ng-template>
+                        <ng-template swiperSlide><img src="../../../assets/images/img-start-the-game-steps-5-m.png" class="swiper_img" />
+                        </ng-template>
+                    </swiper>
+                </div>
+            </div>
+
+            <!-- <div class="ion-hide-lg-down">
+          <div class="spread">
+            <ion-row>
+              <ion-col sizeLg="8" offsetLg="2">
+                <div class="spread-text">
+                  <div class="Title">
+                    <b>{{ 'SPREAD_THE_WORD' | translate }}</b>
+                  </div>
+                  <div class="Desc">
+                    {{ 'JOIN_OUR_BUDDY_REFERRAL_PROGRAM_FOR_ACTIVE' | translate }}
+                  </div>
+
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div> -->
+
+            <!-- <div class="ion-hide-lg-up">
+          <div class="spread_mobile">
+            <img src="../../../assets//images/img-spread-the-word.png" />
+            <br />
+            <div class="spread-text">
+              <div class="Title"><b>{{ 'SPREAD_THE_WORD' | translate }}</b></div>
+              <div class="Desc">
+                {{ 'JOIN_OUR_BUDDY_REFERRAL_PROGRAM_FOR_ACTIVE' | translate }}
+              </div>
+
+            </div>
+          </div>
+        </div> -->
+
+            <!-- <div class="ion-hide-lg-down">
+          <div class="growth">
+            <ion-row>
+              <ion-col sizeSm="7" offsetMd="1" sizeLg="7" offsetLg="1">
+                <div class="growth-img">
+                  <img src="../../assets/images/bg-grow-your-team.png" />
+                </div>
+                <div class="growth-text">
+                  <div class="growth-title">
+                    <b>{{ 'GROW_YOUR_TEAM' | translate }}</b>
+                  </div>
+                  <div class="Desc">
+                    {{ 'PERSONALLY_REFER_AT_LEAST' | translate }}
+                    <br />
+                    {{ 'YOUR_TEAM_BONUS_PERCENTAGE' | translate }}
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div> -->
+
+            <!-- <div class="ion-hide-lg-up">
+          <div class="growth_mobile">
+            <img src="../../assets/images/img-grow-your-team.png" />
+            <br />
+            <div class="growth-text">
+              <div class="growth-title ion-text-center">
+                <b>{{ 'GROW_YOUR_TEAM' | translate }}</b>
+              </div>
+              <div class="Desc">
+                {{ 'PERSONALLY_REFER_AT_LEAST' | translate }}
+                <br /><br />
+                {{ 'YOUR_TEAM_BONUS_PERCENTAGE' | translate }}
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+            <!-- <div class="roadmap">
+              <div class="roadmap-text">
+                <div class="Title">
+                  <p><b>{{ 'FUTURE_ROAD_MAP' | translate }}</b></p>
+                </div>
+                <ion-row>
+                  <ion-col sizeLg="3" offsetLg="2">
+                    <div class="future-year">
+                      <h3>April 2023</h3>
+                      <div class="future_year_content">
+                        <p>- Launch of eFOREST²</p>
+                        <p>- Earning in USDT</p>
+                        <p>- Earn 3x in Fruits</p>
+                        <p>- eFOREST² Seed Packages</p>
+                      </div>
+                    </div>
+
+                  </ion-col>
+                  <ion-col sizeLg="3">
+                    <div class="future-year">
+                      <h3>Jun-Sept 2023</h3>
+                      <div class="future_year_content">
+                        <p>- EduSmart learning programs (using Fruits as discounts)</p>
+                        <p>- BStill sound app</p>
+                      </div>
+                    </div>
+                  </ion-col>
+                  <ion-col sizeLg="3">
+                    <div class="future-year">
+                      <h3>2023/2024</h3>
+                      <div class="future_year_content">
+                        <p>- eFOREST² Metaverse</p>
+                        <p>- Added characters to eFOREST²</p>
+                        <p>- Carbon credits development</p>
+                        <p>- Redemption programs</p>
+                        <p>- Advertising space in eFOREST²</p>
+                      </div>
+                    </div>
+                  </ion-col>
+              </ion-row>
+              </div>
+        </div> -->
+
+            <div class="discord">
+                <!-- <a style="text-decoration: unset;" href="https://discord.gg/qDsZyymr" target="_blank"> -->
+                <ion-row>
+                    <ion-col sizeLg="10" offsetLg="1">
+                        <div class="community-text">
+                            <div class="Title">
+                                <b>{{ 'JOIN_OUR_COMMUNITY' | translate }}</b>
+                            </div>
+                            <div class="growth-text">
+                                {{ 'GET_THE_LATEST_NEWS' | translate }}
+                            </div>
+                            <div>
+                                <br /><br />
+
+                                <div class="login_btn_1" style="margin: auto">
+                                    <button class="nav_btn_1">
+                    <a
+                      style="text-decoration: unset; color: #000"
+                      href="https://t.me/+z0XX_-74meI3Mjhl"
+                      target="_blank"
+                    >
+                      {{ 'JOIN_OUR_TELEGRAM' | translate }}
+                    </a>
+                  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</app-pre-navbar>
+
+<!-- </ion-content> -->

@@ -1,0 +1,174 @@
+<div>
+  <div class="package_title">
+    <b>{{ "PURCHASED_PACKAGES" | translate }}</b>
+  </div>
+  <br />
+  <ion-row>
+    <ion-col sizeXs="12" sizeSm="6">
+      <div class="total_planted_container">
+        <div class="total_planted_title">
+          <img
+            src="../../../assets/images/icon-love-tree.png"
+            style="margin-right: 16px"
+          />
+          <div class="total_planted_desc">
+            {{ "TOTAL_LOVE_TREE_PLANT" | translate }}
+          </div>
+        </div>
+        <div class="total_planted_value">
+          <b>{{ numberWithCommas(totalLoveTrees) }}</b>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col sizeXs="12" sizeSm="6">
+      <div class="total_planted_container">
+        <div class="total_planted_title">
+          <img
+            src="../../../assets/images/icon-earth-tree.png"
+            style="margin-right: 16px"
+          />
+          <div class="total_planted_desc">
+            {{ "TOTAL_EARTH_TREE_PLANT" | translate }}
+          </div>
+        </div>
+        <div class="total_planted_value">
+          <b>{{ numberWithCommas(totalEarthTrees) }}</b>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <br />
+  <div class="table_wrapper">
+    <table
+      id="packageTable"
+      style="width: 100%; border-collapse: separate; border-spacing: 0 6px"
+    >
+      <tr>
+        <th (click)="sortTable(0)">
+          {{ "TYPE" | translate }}
+          <ion-icon
+            [id]="'arrows_' + 0"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="sortTable(1)">
+          {{ "PACKAGE_REF" | translate }}
+          <ion-icon
+            [id]="'arrows_' + 1"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="sortTable(2)">
+          {{ "ORDER_ID" | translate }}
+          <ion-icon
+            [id]="'arrows_' + 2"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="sortTable(3)">
+          {{ "DATE" | translate }}
+          <ion-icon [id]="'arrows_' + 3" [name]="'caret-up-outline'"></ion-icon>
+        </th>
+        <th (click)="sortTable(4)">
+          {{ "LOVE_TREE" | translate }}
+          <ion-icon
+            [id]="'arrows_' + 4"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="sortTable(5)">
+          {{ "EARTH_TREE" | translate }}
+          <ion-icon
+            [id]="'arrows_' + 5"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="sortTable(6)">
+          {{ "AMOUNT" | translate }} (USDT)
+          <ion-icon
+            [id]="'arrows_' + 6"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <!-- <th>
+          <div>Show Trees</div>
+        </th> -->
+      </tr>
+      <ng-container *ngFor="let order of orderList; let i = index">
+        <tr class="table_row">
+          <td
+            [style]="{ color: order?.color }"
+            class="granstander_font ion-text-bold"
+          >
+            {{ order?.package_name }}
+          </td>
+          <td>
+            {{ order?.package_ref }}
+          </td>
+          <td>
+            {{ order?.id }}
+          </td>
+          <td>{{ order?.ordered_at_timestamp | date: "d MMM YYYY" }}</td>
+          <td>{{ order?.love_tree | currency: " ":"symbol":"0.0-0" }}</td>
+          <td>{{ order?.earth_tree | currency: " ":"symbol":"0.0-0" }}</td>
+          <td>{{ order?.pay_amount | currency: " ":"symbol":"0.0-0" }}</td>
+          <div class="url_button" (click)="triggerModal(order?.package_ref)">
+            <td
+              style="display: flex; justify-content: center; min-width: unset"
+            >
+              <ion-icon
+                style="font-size: 24px; color: forestgreen"
+                name="open-outline"
+              ></ion-icon>
+            </td>
+          </div>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</div>
+
+<ion-modal
+  trigger="treeModal"
+  [isOpen]="showURLModal"
+  (didDismiss)="dismissModal()"
+>
+  <ng-template>
+    <div class="site_container">
+      <ion-toolbar color="transparent">
+        <ion-buttons slot="end">
+          <ion-button color="dark" (click)="dismissModal()">
+            <ion-icon name="close" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-row>
+        <ion-col size="12">
+          <div class="project_subtitle">
+            <b>{{ "YOUR_TREES" | translate }}</b>
+          </div>
+          <ng-container *ngIf="urlList.length > 0; else noUrl">
+            <ng-container *ngFor="let url of urlList">
+              <ul class="url_container">
+                <li>
+                  <a target="_blank" [href]="url">{{ url }}</a>
+                </li>
+              </ul>
+            </ng-container>
+          </ng-container>
+          <ng-template #noUrl>
+            <div style="padding: 0 15px; text-align: center">
+              {{ "URL_DATA_NOT_AVAILABLE" | translate }}
+            </div>
+          </ng-template>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,44 @@
+<div class="site_container">
+  <div class="home_container">
+    <div class="referral-container">
+      <ion-toolbar color="transparent">
+        <ion-buttons slot="end">
+          <ion-button color="dark" (click)="onDismiss()">
+            <ion-icon name="close" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-row>
+        <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+          <div class="project_subtitle">
+            <b>{{ "EARNING_LIMIT_ALERT" | translate }}</b>
+          </div>
+          <br />
+
+          <ion-row>
+            <ion-col class="center" sizeXs="12" sizeSm="12">
+              <h1 class="lastEmittedValueSize">{{ lastEmittedValue }} %</h1>
+            </ion-col>
+            <ion-col sizeXs="12" sizeSm="12">
+              <ion-range
+                [min]="20"
+                aria-label="Range with pin"
+                [pin]="false"
+                [pinFormatter]="pinFormatter"
+                (ionChange)="onIonChange($event)"
+                [value]="lastEmittedValue"
+              >
+                <div style="font-size: 18px" slot="start">20</div>
+                <div style="font-size: 18px" slot="end">100</div>
+              </ion-range>
+            </ion-col>
+          </ion-row>
+          <br /><br />
+          <button class="button_submit" type="submit" (click)="onUpdate()">
+            {{ "SUBMIT" | translate }}
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</div>

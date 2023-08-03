@@ -1,0 +1,383 @@
+<ng-template #migrateV1>
+  <div class="support_btn" *ngIf="userDetails?.country_id == 45">
+    <a href="https://www.jotform.ca/230727506825054" target="_blank">
+      {{ "MIGRATE_V1" | translate }}
+    </a>
+  </div>
+  <div class="support_btn">
+    <a href="https://form.jotform.com/231308821704450" target="_blank">
+      {{ "CRYPTO_CARD" | translate }}
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #sideMenu>
+  <div class="side_menu_desktop">
+    <br />
+    <div class="side_menu_logo">
+      <img src="../../../assets/images/horizontal_logo_2.png" />
+    </div>
+    <br />
+    <ng-container *ngFor="let menu of SideMenu">
+      <ng-container *ngIf="menu.name !== 'MIGRATE_V1'; else migrateV1">
+        <div
+          class="side_menu_button"
+          *ngIf="menu.active && !menu.groupName"
+          (click)="changePage(menu.id)"
+          [ngClass]="selectedMenu == menu.id ? 'side_menu_button_active' : ''"
+        >
+          {{ menu.name | translate }}
+        </div>
+        <ng-container
+          *ngIf="menu.active == 1 && menu.groupName && menu.active == 1"
+        >
+          <div
+            class="accordion"
+            [id]="menu.groupId"
+            [ngClass]="menu.isOpen ? 'side_menu_button_active' : ''"
+            (click)="showAccordion(menu.groupId)"
+          >
+            {{ menu.groupName | translate }}
+            <ion-icon
+              [name]="
+                menu.isOpen ? 'chevron-up-outline' : 'chevron-down-outline'
+              "
+            ></ion-icon>
+          </div>
+          <div class="panel" [hidden]="!menu.isOpen">
+            <ng-container *ngFor="let group of menu.group">
+              <div
+                (click)="changePage(group.id)"
+                *ngIf="group.active"
+                class="side_menu_button accordion_button"
+                [ngClass]="
+                  selectedMenu == group.id ? 'side_menu_button_active' : ''
+                "
+              >
+                {{ group.name | translate }}
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <!-- <div class="support_btn" (click)="showAnnouncement()">
+            {{ "ANNOUNCEMENT" | translate }}
+        </div> -->
+    <div class="support_btn" (click)="changeLanguage()">
+      {{ "CHANGE_LANG" | translate }}
+    </div>
+    <div class="support_btn">
+      <a href="https://ef2.gitbook.io/user-guides/" target="_blank">
+        {{ "RESOURCES_CENTER" | translate }}
+      </a>
+    </div>
+    <div class="support_btn">
+      <a href="https://help.eforest.world/" target="_blank">{{
+        "SUPPORT_HELP" | translate
+      }}</a>
+    </div>
+    <div class="logout_button ion-hide-md-up" (click)="changeRoute('/login')">
+      {{ "LOGOUT" | translate }}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #announcementBtn>
+  <div class="navbar" style="justify-content: end">
+    <div class="navbar_border navbar_padding" (click)="showAnnouncement()">
+      <div class="navbar_inner announcement_btn">
+        <img src="../../../assets/images/icon-announcement.png" width="20" />
+        <!-- <ion-icon name="notifications-outline" style="font-size: 26px"></ion-icon> -->
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ion-menu side="start" menuId="post_menu" contentId="main">
+  <ion-content>
+    <ng-content *ngTemplateOutlet="sideMenu"></ng-content>
+  </ion-content>
+</ion-menu>
+
+<ion-content
+  [fullscreen]="true"
+  [scrollEvents]="true"
+  (ionScroll)="scrollEvent($event)"
+>
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <div style="background: #16402a">
+    <div class="marquee_container">
+      <div class="marquee_item">
+        <img src="../../../assets/images/icon-love-tree.png" />
+        <div>
+          {{ "TOTAL_LOVE_TREE_PLANT" | translate }}
+          <b
+            ><span>{{ totalLoveTree }}</span></b
+          >
+        </div>
+      </div>
+      <div class="marquee_item">
+        <img src="../../../assets/images/icon-earth-tree.png" />
+        <div>
+          {{ "TOTAL_EARTH_TREE_PLANT" | translate }}
+          <b>
+            <span>{{ totalEarthTree }}</span></b
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar_container">
+    <ion-row
+      scrollY="true"
+      style="height: 100%; overflow: auto"
+      class="navbar_row"
+    >
+      <ion-col>
+        <ion-row style="height: 100%">
+          <ion-col sizeMd="0" sizeLg="3" class="ion-hide-lg-down">
+            <ng-content *ngTemplateOutlet="sideMenu"></ng-content>
+          </ion-col>
+          <ion-col sizeMd="12" sizeLg="9">
+            <!-- <div class="navbar_right_container"> -->
+            <div class="navbar_wrapper">
+              <div class="navbar" style="margin-bottom: 12px">
+                <div class="navbar_left">
+                  <ion-icon
+                    name="menu-outline"
+                    style="font-size: 32px"
+                    (click)="openMenu()"
+                    class="ion-hide-lg-up"
+                  ></ion-icon>
+                </div>
+                <div class="navbar_right">
+                  <ng-container>
+                    <ng-content
+                      class="ion-hide-md-down"
+                      *ngTemplateOutlet="announcementBtn"
+                    ></ng-content>
+                  </ng-container>
+                  <div class="navbar_border navbar_padding">
+                    <div
+                      class="navbar_item navbar_inner"
+                      (click)="
+                        changePage(SideMenuItems.USDT_WALLET);
+                        openAccordion('myWallet')
+                      "
+                    >
+                      <div>
+                        <img
+                          src="../../../assets/images/icon-usdt-wallet-bigger.png"
+                          width="20"
+                        />
+                      </div>
+                      <div class="navbar_desc">
+                        {{ usdtBalance | currency : " " : "symbol" : "0.0-2" }}
+                        USDT
+                      </div>
+                    </div>
+                  </div>
+                  <div class="navbar_border navbar_padding ion-hide-md-down">
+                    <div
+                      class="navbar_item navbar_inner"
+                      (click)="
+                        changePage(SideMenuItems.FRUITS_WALLET);
+                        openAccordion('myWallet')
+                      "
+                    >
+                      <div>
+                        <img
+                          style="transform: scale(1.25)"
+                          src="../../../assets/images/icon-fruits-wallet-bigger.png"
+                          width="20"
+                        />
+                      </div>
+                      <div class="navbar_desc">
+                        {{ "FRUITS_WALLET" | translate }}:
+                        {{ seedBalance | currency : " " : "symbol" : "0.0-2" }}
+                      </div>
+                      &nbsp;
+
+                      <!-- <ion-icon
+                        id="seedwalletinfo"
+                        name="information-circle-outline"
+                      >
+                      </ion-icon>
+                      <ion-popover
+                        trigger="seedwalletinfo"
+                        triggerAction="hover"
+                      >
+                        <ng-template>
+                          <ion-content>
+                          <div class="info-pop">
+                            {{ "SEED_HOVER" | translate }}
+                          </div>
+                          </ion-content>
+                        </ng-template>
+                      </ion-popover> -->
+                    </div>
+                  </div>
+                  <!-- <div class="navbar_border navbar_padding ion-hide-md-down">
+                                        <div class="navbar_item navbar_inner">
+                                            <div>
+                                                <img src="../../../assets/images/icon-temp-seed-wallet.png" width="25" />
+                                            </div>
+                                            <div class="navbar_desc">
+                                                {{ "BASKET" | translate }}: 0
+                                            </div>
+                                            &nbsp;
+                                            <ion-icon id="tempseedwalletinfo" name="information-circle-outline"></ion-icon>
+                                            <ion-popover trigger="tempseedwalletinfo" triggerAction="hover">
+                                                <ng-template>
+                                                    <div class="info-pop">
+                                                        {{ "TEMP_SEED_HOVER" | translate }}
+                                                    </div>
+                                                </ng-template>
+                                            </ion-popover>
+                                        </div>
+                                    </div> -->
+                  <div
+                    class="navbar_item navbar_padding ion-hide-sm-down navbar_logout"
+                    (click)="changeRoute('/login')"
+                  >
+                    <div>
+                      <img
+                        src="../../../assets/images/icon-logout.png"
+                        width="25"
+                      />
+                    </div>
+                    <div class="navbar_desc">{{ "LOGOUT" | translate }}</div>
+                  </div>
+                </div>
+              </div>
+              <!-- <ng-container *ngIf="!mobile">
+                                <ng-content *ngTemplateOutlet="announcementBtn"></ng-content>
+                            </ng-container> -->
+            </div>
+            <!-- <br /> -->
+            <div class="navbar_right ion-hide-md-up">
+              <div class="navbar_border navbar_padding">
+                <div
+                  class="navbar_item navbar_inner"
+                  (click)="
+                    changePage(SideMenuItems.FRUITS_WALLET);
+                    openAccordion('myWallet')
+                  "
+                >
+                  <div>
+                    <img
+                      src="../../../assets/images/icon-fruits-wallet-bigger.png"
+                      width="20"
+                    />
+                  </div>
+                  <div class="navbar_desc">
+                    {{ "FRUITS_WALLET" | translate }}:
+                    {{ seedBalance | currency : " " : "symbol" : "0.0-2" }}
+                  </div>
+                  &nbsp;
+                  <!-- <ion-icon id="seedinfo" name="information-circle-outline">
+                  </ion-icon>
+                  <ion-popover trigger="seedinfo" triggerAction="hover">
+                    <ng-template>
+                      <div class="info-pop">
+                        {{ "SEED_HOVER" | translate }}
+                      </div>
+                    </ng-template>
+                  </ion-popover> -->
+                </div>
+              </div>
+            </div>
+            <!-- <div class="navbar_border navbar_padding" style="width: 50%">
+                                <div class="navbar_item navbar_inner">
+                                    <div>
+                                        <img src="../../../assets/images/icon-temp-seed-wallet.png" width="25" />
+                                    </div>
+                                    <div class="navbar_desc">{{ "BASKET" | translate }}: 0</div>
+                                    &nbsp;
+                                    <ion-icon id="tempseedinfo" name="information-circle-outline"></ion-icon>
+                                    <ion-popover trigger="tempseedinfo" triggerAction="hover">
+                                        <ng-template>
+                                            <div class="info-pop">
+                                                {{ "TEMP_SEED_HOVER" | translate }}
+                                            </div>
+                                        </ng-template>
+                                    </ion-popover>
+                                </div>
+                            </div> -->
+            <!-- </div> -->
+            <br />
+            <div class="menu_content">
+              <ng-container [ngSwitch]="selectedMenu">
+                <ng-container *ngSwitchCase="SideMenuItems.DASHBOARD">
+                  <app-dashboard></app-dashboard>
+                </ng-container>
+                <!-- <ng-container *ngSwitchCase="SideMenuItems.MIGRATE_V1">
+                  <a href="https://help.eforest.world/" target="_blank">{{
+                    "SUPPORT_HELP" | translate
+                  }}</a>
+                </ng-container> -->
+                <ng-container *ngSwitchCase="SideMenuItems.PURCHASE">
+                  <app-purchase></app-purchase>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.MY_PACKAGE">
+                  <app-my-package></app-my-package>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.MY_COMMUNITY">
+                  <app-my-team></app-my-team>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.MY_L1_BUDDIES">
+                  <app-my-direct-bonus></app-my-direct-bonus>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.PROFILE">
+                  <app-profile></app-profile>
+                </ng-container>
+                <!-- <ng-container *ngSwitchCase="SideMenuItems.MY_DIRECT_BONUS">
+                  <app-my-direct-bonus></app-my-direct-bonus>
+                </ng-container>-->
+                <ng-container *ngSwitchCase="SideMenuItems.MY_EARNINGS">
+                  <app-my-team-bonus></app-my-team-bonus>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.FRUITS_WALLET">
+                  <app-seed-wallet></app-seed-wallet>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.MY_EFOREST">
+                  <app-planting></app-planting>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.USDT_WALLET">
+                  <app-usdt-wallet></app-usdt-wallet>
+                </ng-container>
+                <!-- <ng-container *ngSwitchCase="SideMenuItems.BALI_DESC">
+                  <app-incentive></app-incentive>
+                </ng-container> -->
+                <!-- <ng-container *ngSwitchCase="SideMenuItems.BUY">
+                  <app-p2p
+                    [type]="'BUY_SEEDS'"
+                    (changePage)="routeToP2POrderHistory('buy')"
+                  ></app-p2p>
+                </ng-container>
+                <ng-container *ngSwitchCase="SideMenuItems.SELL">
+                  <app-p2p
+                    [type]="'SELL_SEEDS'"
+                    (changePage)="routeToP2POrderHistory('sell')"
+                  ></app-p2p>
+                </ng-container> -->
+                <!-- <ng-container *ngSwitchCase="SideMenuItems.ORDER_HISTORY">
+                  <app-p2p-history
+                    [type_selected]="typeSelected"
+                  ></app-p2p-history>
+                </ng-container> -->
+                <!-- <ng-container *ngSwitchCase="['d', 'e', 'f'].includes(options) ? options : !options">Common Code</ng-container> -->
+                <ng-container *ngSwitchDefault>
+                  <app-dashboard></app-dashboard>
+                </ng-container>
+              </ng-container>
+            </div>
+            <!-- </div> -->
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

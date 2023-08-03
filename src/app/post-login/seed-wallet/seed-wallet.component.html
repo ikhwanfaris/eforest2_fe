@@ -1,0 +1,348 @@
+<div>
+  <div class="title-wrapper">
+    <div class="package_title">
+      <img src="../../../assets/images/icon-fruits-wallet-bigger.png" />
+      <b>{{ "FRUITS_WALLET" | translate }}</b>
+    </div>
+
+    <!-- <div class="button_container">
+            <div class="button_desc" id="transfer_seed">
+                {{ "TRANSFER_SEED" | translate }}
+            </div>
+        </div> -->
+  </div>
+
+  <br /><br class="ion-hide-sm-down" />
+  <div class="filter_section2">
+    <div style="margin-right: 12px; min-width: 112px; padding-bottom: 10px">
+      <b>{{ "TRANSACTION_TYPE" | translate }} </b>
+    </div>
+    <div class="date_filter_container">
+      <!-- <div class="date_filter" [ngClass]="transaction_selected == 1 ? 'active_filter' : ''" (click)="transactionChange(1)">
+                {{ "TRANSFER_IN" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="transaction_selected == 2 ? 'active_filter' : ''" (click)="transactionChange(2)">
+                {{ "TRANSFER_OUT" | translate }}
+            </div> -->
+      <!--  -->
+      <div
+        class="date_filter"
+        [ngClass]="transaction_selected == 2 ? 'active_filter' : ''"
+        (click)="transactionChange(2)"
+      >
+        {{ "DEDUCTIONS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="transaction_selected == 3 ? 'active_filter' : ''"
+        (click)="transactionChange(3)"
+      >
+        {{ "HARVEST" | translate }}
+      </div>
+      <!-- <div class="date_filter" [ngClass]="transaction_selected == 6 ? 'active_filter' : ''" (click)="transactionChange(6)">
+                {{ "DIRECT_BONUS" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="transaction_selected == 7 ? 'active_filter' : ''" (click)="transactionChange(7)">
+                {{ "TEAM_BONUS" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="transaction_selected == 8 ? 'active_filter' : ''" (click)="transactionChange(8)">
+                {{ "REPLANT" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="transaction_selected == 9 ? 'active_filter' : ''" (click)="transactionChange(9)">
+                {{ "ESCROWED" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="transaction_selected == 10 ? 'active_filter' : ''" (click)="transactionChange(10)">
+                {{ "ESCROWED_RELEASE" | translate }}
+            </div> -->
+    </div>
+  </div>
+  <div class="filter_section">
+    <div style="margin-right: 12px; min-width: 115px">
+      <b> {{ "FILTER_BY_DATE" | translate }} </b>
+    </div>
+    <div class="date_filter_container">
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 1 ? 'active_filter' : ''"
+        (click)="rangeChange(1)"
+      >
+        {{ "TODAY" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 2 ? 'active_filter' : ''"
+        (click)="rangeChange(2)"
+      >
+        {{ "YESTERDAY" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 7 ? 'active_filter' : ''"
+        (click)="rangeChange(7)"
+      >
+        {{ "LAST_7_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 30 ? 'active_filter' : ''"
+        (click)="rangeChange(30)"
+      >
+        {{ "LAST_30_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 60 ? 'active_filter' : ''"
+        (click)="rangeChange(60)"
+      >
+        {{ "LAST_60_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 90 ? 'active_filter' : ''"
+        (click)="rangeChange(90)"
+      >
+        {{ "LAST_90_DAYS" | translate }}
+      </div>
+    </div>
+  </div>
+  <br /><br />
+
+  <div *ngIf="this?.bonusList?.data?.items.length > 0" class="table_wrapper">
+    <table
+      style="width: 100%; border-collapse: separate; border-spacing: 0 6px"
+      id="seedsTable"
+    >
+      <tr>
+        <th (click)="updateSortBy('datetime')">
+          {{ "CREATED_AT" | translate }}
+          <ion-icon
+            [id]="'arrows_seeds_' + 'datetime'"
+            [name]="'caret-down-outline'"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('txn_ref')">
+          {{ "REFERENCE_NUMBER" | translate }}
+          <ion-icon
+            [id]="'arrows_seeds_' + 'txn_ref'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('txn_in')">
+          {{ "IN" | translate }}
+          <ion-icon
+            [id]="'arrows_seeds_' + 'txn_in'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('txn_out')">
+          {{ "OUT" | translate }}
+          <ion-icon
+            [id]="'arrows_seeds_' + 'txn_out'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('update_type')">
+          {{ "TRANSACTION_TYPE" | translate }}
+          <ion-icon
+            [id]="'arrows_seeds_' + 'update_type'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('remarks')">
+          {{ "REMARKS" | translate }}
+          <ion-icon
+            [id]="'arrows_seeds_' + 'remarks'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+      </tr>
+      <ng-container *ngIf="this.is_loading == false">
+        <tr *ngFor="let order of bonusList?.data?.items" class="table_row">
+          <td>
+            {{ order?.datetime.substring(0, 10) }}
+          </td>
+          <td>
+            {{ order?.txn_ref }}
+          </td>
+          <td>
+            {{ numberWithCommas(order?.txn_in) }}
+          </td>
+          <td>
+            {{ numberWithCommas(order?.txn_out) }}
+          </td>
+          <td>
+            {{ order?.update_type }}
+          </td>
+          <td>
+            {{ order?.remarks ? order?.remarks : "-" }}
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+    <br />
+    <div
+      *ngIf="this?.bonusList?.data?.items.length > 0"
+      class="pagination_container"
+    >
+      <div class="total_page">
+        {{ "SHOWING" | translate }}
+        <b
+          >{{ this.bonusList?.data?.current_item_position_start }} to
+          {{ this.bonusList?.data?.current_item_position_end }}</b
+        >
+        of
+        <b>{{ totalEntry }}</b>
+      </div>
+      <div class="pagination">
+        <div class="pagination_cursor">
+          <ion-icon (click)="lessPage()" name="chevron-back-outline"></ion-icon>
+        </div>
+        <div
+          (click)="changePage(a + 1)"
+          *ngFor="let pages of [].constructor(totalPages); let a = index"
+          [ngClass]="this.page == a + 1 ? 'active_pagination' : ''"
+        >
+          {{ a + 1 }}
+        </div>
+        <div class="pagination_cursor">
+          <ion-icon
+            (click)="addPage()"
+            name="chevron-forward-outline"
+          ></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this?.bonusList?.data?.items.length == 0" class="table_wrapper">
+    <div style="text-align: center" class="table_row">
+      {{ "NO_DATA" | translate }}
+    </div>
+  </div>
+  <!-- <div *ngIf="is_loading == true"></div> -->
+  <ion-modal class="transfer_container" trigger="transfer_seed">
+    <ng-template>
+      <div class="site_container">
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button slot="end" (click)="onDismiss()">
+              <ion-icon color="white" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+        <ion-row>
+          <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+            <div class="project_subtitle">
+              <b>{{ "TRANSFER_SEED" | translate }}</b>
+            </div>
+            <br />
+            <form [formGroup]="form" (ngSubmit)="transferSeed()">
+              <ion-row>
+                <ion-col sizeXs="12 " sizeSm="12 ">
+                  <ion-item>
+                    <ion-label position="floating"
+                      >{{ "RECEIVER_USERNAME" | translate }}
+                      <span style="color: red">*</span>
+                    </ion-label>
+                    <ion-input formControlName="recipient_username"></ion-input>
+                  </ion-item>
+                  <div
+                    *ngIf="submitted && form.controls.recipient_username.errors"
+                    class="validator-error"
+                  >
+                    {{ "VALID_USERNAME_EMAIL" | translate }}
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col sizeXs="12 " sizeSm="12 ">
+                  <ion-item>
+                    <ion-label position="floating "
+                      >{{ "AMOUNT" | translate }}
+                      <span style="color: red">*</span></ion-label
+                    >
+                    <ion-input
+                      formControlName="amount"
+                      placeholder="{{ 'MIN_TRANSFER_AMOUNT' | translate }}"
+                    >
+                    </ion-input>
+                  </ion-item>
+                  <div
+                    *ngIf="submitted && form.controls.amount.errors"
+                    class="validator-error"
+                  >
+                    {{ "VALID_AMOUNT" | translate }}
+                  </div>
+                </ion-col>
+                <div class="min-requirement">
+                  <span
+                    ><i> *{{ "MIN_TRANSFER_AMOUNT" | translate }}</i>
+                  </span>
+                </div>
+              </ion-row>
+
+              <ion-row>
+                <ion-col sizeXs="12" sizeSm="12">
+                  <ion-item>
+                    <ion-label position="floating"
+                      >{{ "OTP_CODE" | translate }}
+                      <span style="color: red">*</span></ion-label
+                    >
+                    <ion-input
+                      formControlName="otp_code"
+                      maxlength="6"
+                    ></ion-input>
+                  </ion-item>
+                  <div
+                    *ngIf="submitted && form.controls.otp_code.errors"
+                    class="validator-error"
+                  >
+                    {{ "PLEASE_ENTER_A_VALID" | translate }}
+                  </div>
+                </ion-col>
+                <button
+                  type="button"
+                  class="resend_otp"
+                  (click)="otpCode()"
+                  [disabled]="
+                    !form.controls.recipient_username.value ||
+                    !form.controls.amount.value
+                  "
+                  *ngIf="otp_available"
+                >
+                  <span> {{ "SEND_OTP" | translate }}</span>
+                </button>
+                <div
+                  style="font-family: 'Source Sans Pro', sans-serif"
+                  *ngIf="!otp_available"
+                >
+                  {{ "RESEND_OTP_IN" | translate }} {{ timerLeft }}
+                </div>
+              </ion-row>
+
+              <div class="disclaimer">
+                <b
+                  >{{ "DISCLAIMER" | translate }} :
+                  {{ "DISCLAIMER_INFO" | translate }}</b
+                >
+              </div>
+              <br />
+              <button
+                class="button_submit"
+                type="submit "
+                [disabled]="!form.valid"
+              >
+                {{ "TRANSFER" | translate }}
+              </button>
+            </form>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-template>
+  </ion-modal>
+</div>

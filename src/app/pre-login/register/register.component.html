@@ -1,0 +1,181 @@
+<ion-content [fullscreen]="true">
+    <app-pre-navbar>
+        <div class="site_container">
+            <div class="home_container">
+                <div class="login_container">
+                    <div class="login_title">{{ "REGISTER" | translate }}</div>
+                    <div class="login_background_container">
+                        <form [formGroup]="form" (ngSubmit)="onRegister()">
+                            <ion-row>
+                                <!-- <ion-col sizeXs="12" sizeSm="4">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "FULL_NAME" | translate }}
+                                            <span style="color: red">*</span>
+                                        </ion-label>
+                                        <ion-input formControlName="fullname"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.fullname.errors" class="validator-error">
+                                        {{ "VALID_NAME" | translate }}
+                                    </div>
+                                </ion-col> -->
+                                <ion-col sizeXs="12" sizeSm="6">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "USERNAME" | translate }}
+                                            <span style="color: red">*</span>
+                                        </ion-label>
+                                        <ion-input formControlName="username"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.username.value == ''" class="validator-error">
+                                        {{ "VALID_USERNAME" | translate }}
+                                    </div>
+                                    <div *ngIf="
+                      submitted && form.controls.username.hasError('whitespace')
+                    " class="validator-error">
+                                        {{ "VALID_USERNAME_NO_SPACE" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12" sizeSm="6">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "EMAIL" | translate }}
+                                            <span style="color: red">*</span>
+                                        </ion-label>
+                                        <ion-input formControlName="email"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.email.errors" class="validator-error">
+                                        {{ "VALID_EMAIL" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12" sizeSm="4">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "PASSWORDS" | translate }}
+                                            <span style="color: red">*</span>
+                                        </ion-label>
+                                        <ion-input type="password" formControlName="password"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.password.errors" class="validator-error">
+                                        {{ "VALID_PASSWORD" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12" sizeSm="4">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "CONFIRM_PASS" | translate }}
+                                            <span style="color: red">*</span></ion-label>
+                                        <ion-input type="password" formControlName="password_confirmation"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="
+                      submitted && form.controls.password_confirmation.errors
+                    " class="validator-error">
+                                        {{ "VALID_CONFIRM_PASS" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12" sizeSm="4">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "INVITED_BY" | translate }}
+                                            <span style="color: red">*</span>
+                                        </ion-label>
+                                        <ion-input [disabled]="referral" formControlName="upline_username"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.upline_username.errors" class="validator-error">
+                                        {{ "VALID_INVITED_BY" | translate }}
+                                    </div>
+                                </ion-col>
+
+                                <ion-col sizeXs="12" sizeSm="6">
+                                    <ion-item class="country_selection" style="background: transparent">
+                                        <!-- <ion-label position="floating">Country <span style="color: red;">*</span></ion-label> -->
+                                        <!-- <ion-label position="stacked" color="medium">
+                                            <span class="bold" style="color: red;">Country</span>
+                                        </ion-label> -->
+                                        <ion-select class="country-selection" (ionChange)="onCountryChanged($event)" formControlName="country" placeholder="{{ 'SELECT_COUNTRY' | translate }}">
+                                            <ion-label color="medium" country-selection-header>
+                                                <span class="bold"></span>
+                                            </ion-label>
+
+                                            <ion-select-option *ngFor="let country of countryList" [value]="country.id">
+                                                {{ country.name }}</ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.country.errors" class="validator-error">
+                                        {{ "VALID_SELECT_COUNTRY" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12" sizeSm="6">
+                                    <ion-item class="country_selection" style="background: transparent">
+                                        <!-- <ion-label position="floating">Country <span style="color: red;">*</span></ion-label> -->
+                                        <!-- <ion-label position="stacked" color="medium">
+                                            <span class="bold" style="color: red;">Country</span>
+                                        </ion-label> -->
+                                        <ion-select class="country-selection" formControlName="source_how" placeholder="{{ 'HOW_DO_YOU_KNOW' | translate }}">
+                                            <ion-label color="medium" country-selection-header>
+                                                <span class="bold">{{
+                          "HOW_DO_YOU_KNOW" | translate
+                        }}</span>
+                                            </ion-label>
+                                            <ion-select-option class="source-how" value="Friend's REcommendation">{{ "FRIEND_RECOM" | translate }}
+                                            </ion-select-option>
+                                            <ion-select-option class="source-how" value="Search Engines">{{ "SEARCH_ENGINE" | translate }}</ion-select-option>
+                                            <ion-select-option class="source-how" value="Social Media">
+                                                {{ "SOCIAL_MEDIA" | translate }}
+                                            </ion-select-option>
+                                            <ion-select-option class="source-how" value="Blog or Publications">
+                                                {{ "BLOG_PUB" | translate }}
+                                            </ion-select-option>
+                                            <ion-select-option class="source-how" value="Events and Seminars">
+                                                {{ "EVENT_SEMINAR" | translate }}
+                                            </ion-select-option>
+                                            <ion-select-option class="source-how" value="Others">{{ "OTHER" | translate }}
+                                            </ion-select-option>
+                                        </ion-select>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.source_how.errors" class="validator-error">
+                                        {{ "VALID_HOW_DO_YOU_KNOW" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12">
+                                    <div class="checkbox_container">
+                                        <ion-checkbox style="min-width: 18px" mode="md" (ionChange)="changeEvent($event)"></ion-checkbox>
+                                        <ion-label class="tnc_checkbox">
+                                            {{ "TNC_AGREE" | translate }}
+                                            <a href="../../../assets/files/eForest -Term of Use_v1.1.pdf" class="tnc_pp" target="_blank">{{ "TERM_OF_USE" | translate }}</a
+                      >
+                      {{ "AND_OUR" | translate }}
+                      <a
+                        href="../../../assets/files/E-Forest_-Privacy_Policy.pdf"
+                        class="tnc_pp"
+                        target="_blank"
+                        >{{ "PRIVACY_POLICY" | translate }}</a
+                      ></ion-label
+                    >
+                  </div>
+                </ion-col>
+                <ion-col sizeXs="12">
+                  <button
+                    style="margin-top: 20px"
+                    class="btn_login"
+                    type="submit"
+                    [disabled]="toggleBool"
+                  >
+                    {{ "REGISTER_ACCOUNT" | translate }}
+                  </button>
+                </ion-col>
+                <ion-col sizeXs="12">
+                  <div class="login_container">
+                    <a [routerLink]="['/login']"
+                      >{{ "ALREADY_HAVE_AN_ACCOUNT" | translate }}
+                      <span class="login_text">{{
+                        "LOGIN" | translate
+                      }}</span></a
+                    >
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <br /><br />
+            </form>
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+  </app-pre-navbar>
+</ion-content>

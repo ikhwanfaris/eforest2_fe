@@ -1,0 +1,130 @@
+<div *ngIf="showData == true" class="basic_info">
+  {{ "MY_L1_BUDDIES" | translate }}
+</div>
+<div class="table_wrapper" *ngIf="showData == true">
+  <table
+    mat-table
+    [dataSource]="this.directDetails.users"
+    id="myteamTable"
+  >
+    <!-- <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef (click)="sortTable(0)">
+        <b
+          >{{ "NO" | translate }}
+          <ion-icon
+            [id]="'arrows_myteam_' + 0"
+            [name]="'caret-up-outline'"
+          ></ion-icon
+        ></b>
+      </th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef (click)="sortTable(0)">
+        <b
+          >{{ "USERNAME" | translate }}
+          <ion-icon
+            [id]="'arrows_myteam_' + 0"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon
+        ></b>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef (click)="sortTable(1)">
+        <b
+          >{{ "EMAIL" | translate }}
+          <ion-icon
+            [id]="'arrows_myteam_' + 1"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon
+        ></b>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="community_status">
+      <th mat-header-cell *matHeaderCellDef (click)="sortTable(2)">
+        <b>{{ "COMMUNITY_STATUS" | translate }}
+          <ion-icon
+            [id]="'arrows_myteam_' + 2"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon
+        ></b>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.community_status }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="invited_by">
+      <th mat-header-cell *matHeaderCellDef (click)="sortTable(3)">
+        <b
+          >{{ "INVITED_BY" | translate }}
+          <ion-icon
+            [id]="'arrows_myteam_' + 3"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon
+        ></b>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.invited_by }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="total_purchased_packages">
+      <th mat-header-cell *matHeaderCellDef (click)="sortTable(4)">
+        <b
+          >{{ "TOTAL_PURCHASED_PACKAGES" | translate }}
+          <ion-icon
+            [id]="'arrows_myteam_' + 4"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon
+        ></b>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.total_purchased_packages }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <br />
+</div>
+<div *ngIf="showData == false" class="table_container">
+  <div class="basic_info">{{ "MY_L1_BUDDIES" | translate }}</div>
+  <h2
+    class="ion-text-center"
+    style="font-family: 'Source Sans Pro', sans-serif"
+  >
+    {{ "NO_BUDDIES_YET" | translate }}
+  </h2>
+</div>
+<br>
+<div *ngIf="this.directDetails?.users.length > 0" class="pagination_container">
+  <div class="total_page">
+    {{ "SHOWING" | translate }} <b>{{ this.entry }}</b> of
+    <b>{{ totalEntry }}</b>
+  </div>
+  <div class="pagination">
+    <div class="pagination_cursor">
+      <ion-icon (click)="lessPage()" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div
+      [ngClass]="this.page == a ? 'active_pagination' : ''"
+      *ngFor="let a of this.displayPages"
+    >
+      {{ a }}
+    </div>
+    <div class="pagination_cursor">
+      <ion-icon
+        (click)="addPage()"
+        name="chevron-forward-outline"
+      ></ion-icon>
+    </div>
+  </div>
+</div>
+<div *ngIf="this.is_loading == true"></div>

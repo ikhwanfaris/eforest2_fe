@@ -1,0 +1,53 @@
+[
+  {
+    "id": 0,
+    "name": "DASHBOARD",
+    "active": 1
+  },
+  {
+    "id": 11,
+    "name": "MIGRATE_V1",
+    "active": 1
+  },
+  {
+    "id": 1,
+    "name": "PURCHASE",
+    "active": 1
+  },
+  { "id": 2, "name": "MY_PACKAGE", "active": 1 },
+  { "id": 3, "name": "MY_EFOREST", "active": 1 },
+  {
+    "groupName": "MY_TEAM",
+    "groupId": "myTeam",
+    "isOpen": 0,
+    "active": 1,
+    "group": [
+      { "id": 4, "name": "MY_COMMUNITY", "active": 1 },
+      { "id": 5, "name": "MY_L1_BUDDIES", "active": 1 }
+    ]
+  },
+  { "id": 6, "name": "PROFILE", "active": 1 },
+  { "id": 7, "name": "MY_EARNINGS", "active": 1 },
+  {
+    "groupName": "MY_WALLET",
+    "groupId": "myWallet",
+    "isOpen": 0,
+    "active": 1,
+    "group": [
+      { "id": 8, "name": "FRUITS_WALLET", "active": 1 },
+      { "id": 9, "name": "USDT_WALLET", "active": 1 }
+    ]
+  },
+  { "id": 10, "name": "BALI_DESC", "active": 0 },
+  {
+    "groupName": "SEEDS_MARKETPLACE",
+    "groupId": "p2p",
+    "isOpen": 0,
+    "active": 0,
+    "group": [
+      { "id": 11, "name": "BUY", "active": 0 },
+      { "id": 12, "name": "SELL", "active": 0 },
+      { "id": 13, "name": "ORDER_HISTORY", "active": 0 }
+    ]
+  }
+]

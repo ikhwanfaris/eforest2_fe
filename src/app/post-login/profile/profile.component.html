@@ -1,0 +1,323 @@
+<div>
+    <ion-row>
+        <div class="rank-info">{{ "BASIC_INFORMATION" | translate }}</div>
+    </ion-row>
+    <ion-row class="row_class">
+        <ion-col sizeMd="12" sizeLg="4" sizeXl="4" sizeSm="12" sizeXs="12">
+            <div class="outer_cont">
+                <div class="profile_card_container_bg">
+                    <ion-row>
+                        <ion-col>
+                            <div class="profile_image">
+                                <img src="../../../assets/images/img-default-profile-pic.png" class="img-responsive center-block" /> </div>
+
+                            <div class="profile_card_right">
+
+                                &nbsp;
+
+                                <form [formGroup]="profileForm">
+                                    <ion-item class="profile_edit input_readonly" id="fullNameItem">
+                                        <ion-label>{{ "NAME" | translate }}:</ion-label>
+                                        <ion-input #fullName [readonly]="fullNameInput?.readonly" formControlName="fullname" [style]="{
+                          'font-weight': fullName?.readonly ? 'bold' : '400'
+                        }"></ion-input>
+                                        <!-- <ion-icon [name]=" -->
+                                        <img src="../../../assets/images/icon-edit-name.png" [name]="
+                                          fullName?.readonly
+                                            ? 'create-outline'
+                                            : 'checkmark-outline'
+                                        " slot="end" style="width: 20px;cursor: pointer" (click)="
+                                          fullName.readonly = !fullName.readonly;
+                                          editName(fullName?.readonly)
+                                        " class="img-responsive center-block" />
+                                        <!-- <ion-icon [name]="
+
+                          fullName?.readonly
+                            ? 'create-outline'
+                            : 'checkmark-outline'
+                        " slot="end" style="cursor: pointer" (click)="
+                          fullName.readonly = !fullName.readonly;
+                          editName(fullName?.readonly)
+                         "></ion-icon> -->
+                                    </ion-item>
+                                </form>
+
+                                <div class="input_form">
+                                    <div class="input_desc">{{ "USERNAME" | translate }}:</div>
+                                    &nbsp;
+                                    <div class="input_field">
+                                        {{ userDetails?.username }}
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="input_form">
+                                    <div class="input_desc">{{ "EMAIL" | translate }}:</div>
+                                    &nbsp;
+                                    <div class="input_field">
+                                        {{ userDetails?.email }}
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="input_form">
+                                    <div class="input_desc">
+                                        {{ "JOINED_DATE" | translate }}:
+                                    </div>
+                                    &nbsp;
+                                    <div class="input_field">{{ joinDate }}</div>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+
+        </ion-col>
+        <ion-col sizeMd="12" sizeLg="4" sizeXl="4" sizeSm="12" sizeXs="12">
+            <div class="outer_cont">
+                <div class="profile_card_container">
+                    <ion-row>
+                        <ion-col>
+
+                            <div class="profile_card_right">
+                                <div class="input_form">
+                                    <div class="input_desc">
+                                        {{ "INVITED_BY" | translate }}:
+                                    </div>
+                                    &nbsp;
+                                    <div class="input_field">
+                                        {{ userDetails?.temp_upline_username }}
+                                    </div>
+                                </div>
+                                <br />
+
+                                <!-- </ion-col> -->
+
+
+                                <div class="input_form">
+                                    <div class="input_desc">
+                                        {{ "MY_DIRECT_UPLINE" | translate }}:
+                                    </div>
+                                    &nbsp;
+                                    <div class="input_field">{{ userDetails?.direct_upline ?? 'N/A'}}</div>
+                                </div>
+                                <br />
+                                <div class="input_form">
+                                    <div class="input_desc">
+                                        {{ "MY_COMMUNITY_LEADER" | translate }}:
+                                    </div>
+                                    &nbsp;
+                                    <div class="input_field">{{ userDetails?.my_community_leader ?? 'N/A' }}</div>
+                                </div>
+                                <br />
+                                <div class="input_form">
+                                    <div class="input_desc">
+                                        {{ "MY_FIRST_L1" | translate }}:
+                                    </div>
+                                    &nbsp;
+                                    <div class="input_field">{{ userDetails?.lord_enabled ?? 'N/A' }}</div>
+                                </div>
+
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                </div>
+                <br>
+                <div class="profile_card_container_btm">
+                    <div class="input_form">
+                        <div class="input_desc">
+                            {{ "MAX_EARNINGS" | translate }}:
+                        </div>
+                        &nbsp;
+                        <div class="input_field">{{ userDetails?.max_earnings }}</div>
+                    </div>
+                    <br/>
+                    <div class="input_form">
+                        <div class="input_desc">
+                            {{ "TOTAL_EARNINGS" | translate }}:
+                        </div>
+                        &nbsp;
+                        <div class="input_field">{{ userDetails?.total_earnings }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </ion-col>
+        <ion-col sizeMd="12" sizeLg="4" sizeXl="4" sizeSm="12" sizeXs="12">
+            <div class="outer_cont">
+                <div class="button_container">
+
+                    <ion-row class="btn_row">
+
+                        <div class="button_desc" (click)="onReferralInfoButton()">
+                            {{ "MY_REFERRAL_LINK" | translate }}
+                        </div>
+                        <br />
+                        <div class="button_desc" id="change_password">
+                            {{ "CHANGE_PASSWORD" | translate }}
+                        </div>
+                        <br />
+                        <div class="button_desc" (click)="onBeneficiaryButton()">
+                            {{ "BENEFICIARY_LINK" | translate }}
+                        </div>
+                        <div class="button_desc" (click)="onAlertButton()">
+                            {{ "EARNING_LIMIT_ALERT" | translate }}
+                        </div>
+                    </ion-row>
+                </div>
+            </div>
+        </ion-col>
+
+        <ion-modal trigger="change_password">
+            <ng-template>
+                <div class="site_container">
+                    <!-- <div class="home_container" style="height: 100%"> -->
+                    <ion-toolbar>
+                        <!-- <ion-title style="text-align: center; font-size: 25px; ">Change Password
+                                            </ion-title> -->
+                        <ion-buttons slot="end">
+                            <ion-button slot="end" (click)="onDismiss()">
+                                <ion-icon color="white" name="close"></ion-icon>
+                            </ion-button>
+                        </ion-buttons>
+                    </ion-toolbar>
+
+                    <ion-row>
+                        <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+                            <div class="project_subtitle">
+                                <b>{{ "CHANGE_PASSWORD" | translate }}</b>
+                            </div>
+                            <br />
+                            <form [formGroup]="form" (ngSubmit)="onRegister()">
+                                <ion-row>
+                                    <ion-col sizeXs="12 " sizeSm="12 ">
+                                        <ion-item>
+                                            <ion-label position="floating">{{ "CURRENT_PASSWORD" | translate }}
+                                                <span style="color: red">*</span></ion-label>
+                                            <ion-input type="password" formControlName="curr_password">
+                                            </ion-input>
+                                        </ion-item>
+                                        <div *ngIf="submitted && form.controls.curr_password.errors" class="validator-error">
+                                            {{ "PLEASE_ENTER_A_VALID_PASSWORD" | translate }}.
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col sizeXs="12 " sizeSm="6 ">
+                                        <ion-item>
+                                            <ion-label position="floating">{{ "PASSWORD" | translate }}
+                                                <span style="color: red">*</span></ion-label>
+                                            <ion-input type="password" formControlName="password">
+                                            </ion-input>
+                                        </ion-item>
+                                        <div *ngIf="submitted && form.controls.password.errors" class="validator-error">
+                                            {{ "PLEASE_ENTER_A_VALID_PASSWORD" | translate }}.
+                                        </div>
+                                    </ion-col>
+                                    <ion-col sizeXs="12 " sizeSm="6 ">
+                                        <ion-item>
+                                            <ion-label position="floating ">{{ "CONFIRM_PASS" | translate }}
+                                                <span style="color: red">*</span></ion-label>
+                                            <ion-input type="password" formControlName="password_confirm">
+                                            </ion-input>
+                                        </ion-item>
+                                        <div *ngIf="
+                          submitted && form.controls.password_confirm.errors
+                        " class="validator-error">
+                                            {{ "PASSWORD_NOT_MATCH" | translate }}
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                                <div class="passoword-requirement">
+                                    <span><i> *{{ "MINIMUM_EIGHT_CHARACTER" | translate }}.</i>
+                    </span>
+                                </div>
+                                <button class="button_submit" type="submit ">
+                    {{ "SUBMIT" | translate }}
+                  </button>
+                            </form>
+                        </ion-col>
+                    </ion-row>
+                    <!-- </div> -->
+                </div>
+            </ng-template>
+        </ion-modal>
+
+    </ion-row>
+    <div class="rank-container">
+        <ion-row>
+            <ion-col>
+                <div class="package_title">
+                    <b>{{ "MY_STATUS" | translate }}</b>
+                </div>
+                <br />
+                <div class="status_container" id="status_scroll_profile">
+                    <div class="status" [ngClass]="userDetails?.rank == 0 ? 'status_active' : ''">
+                        {{ "FORESTER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 11 ? 'status_active' : ''">
+                        {{ "1_STAR_FORESTER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 22 ? 'status_active' : ''">
+                        {{ "2_STAR_FORESTER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 33 ? 'status_active' : ''">
+                        {{ "3_STAR_FORESTER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 1 ? 'status_active' : ''">
+                        {{ "1_STAR" | translate }}<br /> {{ "RANGER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 2 ? 'status_active' : ''">
+                        {{ "2_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 3 ? 'status_active' : ''">
+                        {{ "3_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 4 ? 'status_active' : ''">
+                        {{ "4_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 5 ? 'status_active' : ''">
+                        {{ "5_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 6 ? 'status_active' : ''">
+                        {{ "PARTNER" | translate }}
+                    </div>
+                    <div class="status" [ngClass]="userDetails?.rank == 7 ? 'status_active' : ''">
+                        {{ "SENIOR_PARTNER" | translate }}
+                    </div>
+                </div>
+
+                <!-- <div class="rank-level-container">
+                            <ion-row>
+                                <ion-col sizeMd="6" sizeXs="12">
+                                    <div class="level-label">
+                                        <div class="rank-level">
+                                            <p class="ion-no-margin ranking_value"><b>5</b></p>
+                                            <p class="ion-no-margin ranking_desc">Direct</p>
+                                        </div>
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeMd="6" sizeXs="12">
+                                    <div>
+                                        <div class="rank-level">
+                                            <p class="ion-no-margin ranking_value"><b>250K</b></p>
+                                            <p class="ion-no-margin ranking_desc">Team Volume</p>
+                                        </div>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col>
+                                    <div class="benefit-container">
+                                        <p class="ion-no-margin ranking_desc">Benefit</p>
+                                        <div class="benefit-desc">
+                                            <p class="ion-no-margin">Daily Cap +200</p>
+                                        </div>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </div> -->
+            </ion-col>
+        </ion-row>
+    </div>
+</div>

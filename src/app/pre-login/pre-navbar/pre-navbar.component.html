@@ -1,0 +1,76 @@
+<ion-menu side="start" menuId="menu" contentId="main" side="end">
+    <!-- <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Start Menu</ion-title>
+        </ion-toolbar>
+    </ion-header> -->
+    <ion-content class="menu">
+        <div class="nav_logo">
+            <img height="45" src="../../../assets/images/eforest2-logo-vertical.png" />
+        </div>
+        <ion-list class="menu_list">
+            <ion-item [disabled]="activeAnchor == ''" (click)="changeRoute('/')" [ngClass]="activeAnchor == '' ? 'activeClass' : ''">{{ "HOME" | translate }}
+            </ion-item>
+            <ion-item [disabled]="activeAnchor == 'r'" (click)="changeRoute('/r')" [ngClass]="activeAnchor == 'r' ? 'activeClass' : ''">{{ "REGISTERS" | translate }}
+            </ion-item>
+            <ion-item [disabled]="activeAnchor == 'login'" (click)="changeRoute('/login')" [ngClass]="activeAnchor == 'login' ? 'activeClass' : ''">{{ "LOGIN" | translate }}</ion-item>
+            <!-- <ion-item [disabled]="activeAnchor == 'otp'" (click)="changeRoute('/otp')">OTP</ion-item> -->
+            <!-- <ion-item [disabled]="activeAnchor == 'referral'" (click)="changeRoute('/referral')">Referral</ion-item> -->
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="scrollEvent($event)">
+    <ion-router-outlet id="main"></ion-router-outlet>
+
+    <div class="navigation_container">
+        <div class="navigation_inner">
+            <div class="navigation_menu">
+                <ion-row>
+                    <ion-col sizeXs="12">
+                        <div class="navigation_bar">
+                            <div (click)="changeRoute('/')" style="cursor: pointer">
+                                <img height="55" class="ion-hide-sm-down" src="../../../assets/images/horizontal_logo_2.png" />
+                                <img height="40" class="ion-hide-sm-up" src="../../../assets/images/eforest2-logo-vertical.png" />
+                            </div>
+                            <!-- <a style="text-decoration: unset" href="https://discord.gg/qDsZyymr" target="_blank">
+                            <button class="discord_btn">
+                <div>Join Discord</div>
+                <img src="../../assets/images/discord.png" />
+              </button>
+                        </a> -->
+                            <div class="anchor_container">
+                                <ion-button *ngIf="mobile" fill="clear" (click)="openMenu()">
+                                    <ion-icon style="color:#f6c03a" name="menu-outline"></ion-icon>
+                                </ion-button>
+                                <div class="login_btn_1" *ngIf="!mobile">
+                                    <button class="nav_btn_1" (click)="changeRoute('/login')">
+                    {{ "LOGIN" | translate }}
+                  </button>
+                                </div>
+                                <div class="login_btn" *ngIf="!mobile">
+                                    <button class="nav_btn" (click)="changeRoute('/r')">
+                    {{ "REGISTERS" | translate }}
+                  </button>
+                                </div>
+                                <div class="language_selection" (click)="changeLanguage()">
+                                    <ion-icon name="globe-outline" style="font-size: 25px"></ion-icon>
+                                    <div style="
+                      max-width: 68px;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                    ">
+                                        {{ getCurrentLang() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+    </div>
+
+    <ng-content> </ng-content>
+</ion-content>

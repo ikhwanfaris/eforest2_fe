@@ -1,0 +1,60 @@
+<div class="site_container">
+    <div class="home_container">
+        <div class="referral-container">
+            <ion-toolbar color="transparent">
+                <ion-buttons slot="end">
+                    <ion-button color="dark" (click)="onDismiss()">
+                        <ion-icon name="close" slot="icon-only"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+            <ion-row>
+                <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+                    <div class="project_subtitle">
+                        <b>{{'UPDATE_BENEFICIARY_INFO' | translate}}</b>
+                    </div>
+                    <br />
+                    <form [formGroup]="form" (ngSubmit)="onUpdate()">
+                        <ion-row>
+                            <ion-col sizeXs="12" sizeSm="6 ">
+                                <ion-item>
+                                    <ion-label position="floating">{{'LEGAL_NAME' | translate}} <span style="color: red">*</span></ion-label>
+                                    <ion-input formControlName="bef_name"></ion-input>
+                                </ion-item>
+                                <!-- <div *ngIf="submitted && form.controls.password.errors" class="validator-error">
+                                    {{'PLEASE_ENTER_A_VALID_PASSWORD' | translate}}.
+                                </div> -->
+                            </ion-col>
+                            <ion-col sizeXs="12" sizeSm="6 ">
+                                <ion-item>
+                                    <ion-label position="floating ">{{ 'EMAIL' | translate }}
+                                        <span style="color: red">*</span></ion-label>
+                                    <ion-input formControlName="bef_email">
+                                    </ion-input>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col sizeXs="12" sizeSm="6 ">
+                                <ion-item>
+                                    <ion-label position="floating ">{{ 'MOBILE' | translate }}
+                                        <span style="color: red">*</span></ion-label>
+                                    <ion-input formControlName="bef_mobile">
+                                    </ion-input>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col sizeXs="12 " sizeSm="6 ">
+                                <ion-item>
+                                    <ion-label position="floating ">{{ 'IC_PASSPORT_NO' | translate }}
+                                        <span style="color: red">*</span></ion-label>
+                                    <ion-input formControlName="bef_id_no">
+                                    </ion-input>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <br /><br />
+                        <button class="button_submit" type="submit ">{{'UPDATE' | translate}}</button>
+                    </form>
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</div>

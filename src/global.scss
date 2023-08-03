@@ -1,0 +1,263 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: "Sunrise International Demo";
+    src: url("./assets/fonts/Sunrise\ International\ Demo.otf");
+}
+
+@font-face {
+    font-family: "billy";
+    src: url("./assets/fonts/billy.ttf");
+}
+
+@font-face {
+    font-family: "DIN";
+    src: url("./assets/fonts/DIN\ Bold.otf");
+}
+
+:root {
+    ion-content {
+        // --background: #255c4f;
+    }
+    --ion-font-family: "Grandstander",
+    cursive;
+    .site_container {
+        width: 100%;
+        // height: 100%;
+        // max-width: 1440px;
+        margin: 0 auto;
+        // box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .home_container {
+        // background: url(../../../assets/images/e-forest-website-bg_extended.jpg);
+        background-size: cover;
+        // max-width: 1440px;
+        width: 100%;
+        height: auto;
+        // background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: unset;
+        // background-image: url(../src/assets/images/e-forest-website-bg_extended.jpg),
+        //   linear-gradient(to right, #6dc650 0%, #5ac871 30%, #37c362 100%);
+    }
+    .forest_gif {
+        position: absolute;
+    }
+    .project_title {
+        font-family: Sunrise International Demo;
+        color: #fff;
+        font-size: 70px;
+        letter-spacing: 5px;
+        -webkit-text-stroke: 3px black;
+        display: flex;
+        justify-content: center;
+        .dash {
+            font-family: billy;
+            margin-top: 12px;
+            font-size: 90px;
+        }
+    }
+    .referral-modal-container .modal-wrapper {
+        height: 100%;
+    }
+    .beneficiary-modal-container .modal-wrapper {
+        height: 100%;
+    }
+    @media (min-width: 992px) {
+        .home_container {
+            // background: url(../src/assets/images/e-forest-website-bg_extended.jpg);
+            // background-size: cover;
+        }
+        .project_title {
+            font-size: 140px;
+            letter-spacing: 8px;
+            -webkit-text-stroke: 5px black;
+            .dash {
+                margin-top: 28px;
+                font-size: 170px;
+            }
+        }
+    }
+}
+
+.carousel_slider .swiper-slide {
+    width: 520px;
+    height: 380px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+    color: #fff;
+}
+
+.swiper-pagination-bullet {
+    background: #fff;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: #94bc7e;
+}
+
+.swiper-pagination {
+    bottom: -50px;
+}
+
+.swiper-button-prev {
+    animation-name: leftRight;
+    // animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes leftRight {
+    0% {
+        transform: translateX(0);
+    }
+    // 10% {
+    //     transform: translateX(0);
+    // }
+    30% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    57% {
+        transform: translateX(-5px);
+    }
+    // 64% {
+    //     transform: translateX(0);
+    // }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.swiper-button-next {
+    animation-name: rightLeft;
+    // animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rightLeft {
+    0% {
+        transform: translateX(0);
+    }
+    // 10% {
+    //     transform: translateX(0);
+    // }
+    30% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    57% {
+        transform: translateX(5px);
+    }
+    // 64% {
+    //     transform: translateX(0);
+    // }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.gameModal {
+    --width: 90%;
+    --height: 90%;
+}
+
+.adModal {
+    --width: 600px;
+    --height: 420px;
+    --border-radius: 10px;
+}
+
+.announcementModal {
+    --height: 80%;
+    --max-width: 600px;
+}
+
+.videoModal {
+    --height: 50%!important;
+    --max-width: 600px!important;
+    --backdrop-opacity: var(--ion-backdrop-opacity, 0.50);
+}
+
+
+.social_actionsheet,
+.plantAlert {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.alert-wrapper {
+    max-width: 350px !important;
+    width: 320px !important;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+ion-select {
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    .carousel_slider .swiper-slide,
+    .carousel_slider {
+        height: unset !important;
+    }
+    .announcementModal {
+        --height: 90%;
+        --width: 90%;
+    }
+    .adModal {
+        --height: 90%;
+        --width: 90%;
+    }
+}
+
+.package_container .swiper-button-prev:after,
+.package_container .swiper-rtl .swiper-button-next:after,
+.package_container .swiper-button-next:after,
+.package_container .swiper-rtl .swiper-button-prev:after {
+    transform: scale(0.6);
+}
+
+.alert-radio-group .alert-radio-button .alert-radio-label {
+    white-space: pre-line !important;
+    font-size: 15px !important;
+}

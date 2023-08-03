@@ -1,0 +1,109 @@
+.project_subtitle {
+    font-family: "Grandstander", cursive;
+    font-size: 32px;
+    margin: 20px auto 0px;
+}
+
+.site_container {
+    // background: url(../../../assets/images/bg-register-and-login-page.png);
+    background: url(../../../assets/images/bg-for-dashboard-site.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+ion-toolbar {
+    --background: transparent;
+}
+
+.button_desc {
+    font-size: 18px;
+    background-color: #f6c03a;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 15px;
+    width: fit-content;
+    min-width: 200px;
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: 0 0 0 auto;
+}
+
+.button_submit {
+    font-size: 18px;
+    background-color: #f6c03a;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 15px;
+    width: fit-content;
+    min-width: 200px;
+    // text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: auto auto 30px;
+    display: flex;
+    justify-content: center;
+    // box-shadow: 4px 4px 2px 0px #413c3c7d;
+    // border: 1px solid #000000;
+    color: #000000;
+}
+
+.button_desc:hover,
+.button_submit:hover,
+.copyBtn:hover {
+    opacity: 0.6;
+}
+
+ion-label,
+ion-item,
+ion-input {
+    font-family: "Source Sans Pro", sans-serif !important;
+}
+
+ion-item {
+    --highlight-color-focused: red;
+    --border-width: 0;
+    border: 2px dashed #fff;
+    font-size: 18px;
+    border-radius: 16px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #b3b3b3;
+    // background: linear-gradient(#fff, #fff) padding-box, linear-gradient( to top, #65b963 0%, #15a88d 50%, #169ca0 60%, #1891b1 70%, #198bbb 80%, #1a8abf 100%);
+    background: #94bc7e;
+    color: #000;
+}
+
+.center {
+    text-align: center;
+}
+
+ion-range {
+    --bar-background-active: #dca824;
+    --bar-height: 6px;
+    --bar-border-radius: 8px;
+    --knob-background: #f6c03a;
+    --knob-size: 40px;
+    --bar-background: lightgrey;
+}
+
+.lastEmittedValueSize {
+    margin-top: 0px;
+    font-size: 40px;
+    margin-bottom: 0px;
+}
+
+//   ion-range::part(pin) {
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     background: #f6c03a;
+//     color: #fff;
+//     border-radius: 50%;
+//     transform: scale(1.01);
+//     top: -20px;
+//     min-width: 28px;
+//     height: 28px;
+//     transition: transform 120ms ease, background 120ms ease;
+//   }

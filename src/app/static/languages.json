@@ -1,0 +1,79 @@
+[{
+        "lang": "en",
+        "name": "English",
+        "flag": "../../../assets/images/flags/united-kingdom.png",
+        "active": 1
+    },
+    {
+        "lang": "zh_CN",
+        "name": "简体中文",
+        "flag": "../../../assets/images/flags/china.png",
+        "active": 1
+    },
+    {
+        "lang": "fr",
+        "name": "Français",
+        "flag": "../../../assets/images/flags/france.png",
+        "active": 0
+    },
+    {
+        "lang": "de",
+        "name": "German",
+        "flag": "../../../assets/images/flags/germany.png",
+        "active": 0
+    },
+    {
+        "lang": "it",
+        "name": "Italian",
+        "flag": "../../../assets/images/flags/italy.png",
+        "active": 0
+    },
+    {
+        "lang": "ru",
+        "name": "Russian",
+        "flag": "../../../assets/images/flags/russia.png",
+        "active": 0
+    },
+    {
+        "lang": "es",
+        "name": "Spanish",
+        "flag": "../../../assets/images/flags/spain.png",
+        "active": 0
+    },
+    {
+        "lang": "vi",
+        "name": "Tiếng Việt",
+        "flag": "../../../assets/images/flags/vietnam.png",
+        "active": 1
+    },
+    {
+        "lang": "ms",
+        "name": "Malay",
+        "flag": "../../../assets/images/flags/malaysia.png",
+        "active": 0
+    },
+    {
+        "lang": "id",
+        "name": "Indonesia",
+        "flag": "../../../assets/images/flags/indonesia.png",
+        "active": 0
+    },
+    {
+        "lang": "ja",
+        "name": "日本語",
+        "flag": "../../../assets/images/flags/japan.png",
+        "active": 0
+    },
+    {
+        "lang": "pt",
+        "name": "Português",
+        "flag": "../../../assets/images/flags/portugal.png",
+        "active": 0
+    },
+    {
+        "lang": "zh_TW",
+        "name": "繁体中文",
+        "flag": "../../../assets/images/flags/taiwan.png",
+        "active": 1
+    }
+]

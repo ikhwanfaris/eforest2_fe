@@ -1,0 +1,7 @@
+{
+  "name": "eForest_FE",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

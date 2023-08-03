@@ -1,0 +1,65 @@
+.part_title {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.desc_meet_your_tree {
+    font-size: 15px;
+    color: black;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    font-family: "Source Sans Pro", sans-serif;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.card {
+    line-height: 1;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.card_body {
+    background-color: #def3e4;
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    font-size: 21px;
+    padding: 18px 12px;
+    line-height: 1;
+    border-radius: 0 0 18px 18px;
+}
+
+.login_btn {
+    // background: linear-gradient( to top, #65b963 0%, #15a88d 50%, #169ca0 60%, #1891b1 70%, #198bbb 80%, #1a8abf 100%);
+    background: #f6c03a;
+    border-radius: 15px;
+    width: 120px;
+    display: grid;
+    padding: 2px;
+    width: fit-content;
+    align-items: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.nav_btn {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin: 0px;
+    padding: 12px 24px;
+    align-items: center;
+    background: transparent;
+}
+
+.login_btn a {
+    color: #000;
+    text-decoration: none;
+}
+
+.login_btn:hover {
+    opacity: 0.6;
+}

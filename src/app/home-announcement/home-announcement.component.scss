@@ -1,0 +1,19 @@
+ion-toolbar {
+    --background: #000;
+  }
+
+  .site_container {
+    background: #000;
+}
+
+ion-button {
+    --color: #fff!important;
+}
+
+iframe {
+    padding: 0 32px;
+}
+
+ion-modal {
+    --backdrop-opacity: var( --ion-backdrop-opacity, 0.50)!important;
+}

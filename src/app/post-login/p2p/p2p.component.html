@@ -1,0 +1,120 @@
+<div class="package_title">
+  <b>{{ type | translate }}</b>
+</div>
+<br />
+<ion-grid class="container">
+  <ion-radio-group #radioGroup (ionChange)="gemChange($event)">
+    <ion-row *ngIf="gemQuantity.length > 0; else loading">
+      <ng-container *ngFor="let qty of gemQuantity; let i = index">
+        <ion-col size="4" [offset]="i == 3 ? 2 : 0" class="ion-text-center">
+          <button
+            class="gemBtn"
+            [ngClass]="{ activeClass: qty === radioGroup.value }"
+            (click)="radioGroup.value = qty"
+          >
+            {{ qty | number: ".0-0" }}
+            <ion-radio hidden [value]="qty"></ion-radio>
+          </button>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-radio-group>
+  <!-- <p *ngIf="submitted && gemAmount.invalid" style="color: red">
+        {{ "AMOUNT_VALIDATION" | translate }}
+    </p> -->
+</ion-grid>
+<br />
+<div class="summary">{{ "SUMMARY" | translate }}</div>
+
+<div class="sections total">
+  <b>{{
+    (type === "SELL_SEEDS" ? "SELLING_AMOUNT" : "BUYING_AMOUNT") | translate
+  }}</b>
+  <b class="ion-no-margin">
+    {{ gemAmount.value ? (gemAmount.value | number: ".2-2") : "0.00" }}
+    {{ (type === "BUY_SEEDS" ? "USDT" : "SEEDS") | translate }}</b
+  >
+</div>
+<ng-container *ngIf="type === 'SELL_SEEDS'">
+  <div class="sections total">
+    <b> <sup>1</sup> {{ "ACTUAL_USDT_RECEIVING_AMOUNT" | translate }} </b>
+    <b
+      >{{ actualReceiving ? (actualReceiving | number: ".2-2") : "0.00" }}
+      {{ "USDT" | translate }}</b
+    >
+  </div>
+  <br />
+  <i class="sections" style="display: unset"
+    ><sup>1</sup>{{ "GREEN_FEE_DESC" | translate }}</i
+  >
+</ng-container>
+
+<br /><br />
+<button class="button_submit" (click)="requestOTP()">
+  {{ "SUBMIT" | translate }}
+</button>
+
+<ng-template #loading>
+  <ion-spinner style="display: block; margin: auto; height: 100%"></ion-spinner>
+</ng-template>
+
+<ion-modal trigger="treeModal" [isOpen]="showOTPModal" backdropDismiss="false">
+  <ng-template>
+    <div class="site_container">
+      <ion-toolbar color="transparent">
+        <ion-buttons slot="end">
+          <ion-button color="dark" (click)="showOTPModal = false">
+            <ion-icon name="close" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-row>
+        <ion-col size="12">
+          <div class="project_subtitle">
+            <b>{{ type | translate }}</b>
+          </div>
+          <br />
+          <div class="sections total" style="background: unset">
+            <b>{{
+              (type === "SELL_SEEDS" ? "SELLING_AMOUNT" : "BUYING_AMOUNT")
+                | translate
+            }}</b>
+            <b class="ion-no-margin">
+              {{
+                gemAmount.value ? (gemAmount.value | number: ".2-2") : "0.00"
+              }}
+              {{ (type === "BUY_SEEDS" ? "USDT" : "SEEDS") | translate }}</b
+            >
+          </div>
+          <ion-item>
+            <ion-label position="floating"
+              >{{ "OTP_CODE" | translate }}
+              <span style="color: red">*</span></ion-label
+            >
+            <ion-input
+              style="font-family: 'Source Sans Pro', sans-serif"
+              required
+              detail-none
+              type="number"
+              max="6"
+              (ionInput)="otpValueChange($event)"
+            ></ion-input>
+            <ion-button
+              slot="end"
+              class="otp_btn"
+              (click)="requestOTP()"
+              [disabled]="otpDisabled"
+              id="p2p_otp_btn"
+              >{{ "SEND_OTP" | translate }}
+            </ion-button>
+          </ion-item>
+          <br />
+          <br />
+          <button class="button_submit" (click)="startTrade()">
+            {{ "SUBMIT" | translate }}
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-template>
+</ion-modal>

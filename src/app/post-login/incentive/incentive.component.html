@@ -1,0 +1,102 @@
+<div>
+    <!-- <div class="package_title">
+        <b>{{ "BALI_LONG_DESC" | translate }}</b>
+    </div> -->
+
+    <div class="title-wrapper">
+        <div class="package_title">
+            <!-- <img src="../../../assets/images/icon-seed-wallet-large.png" /> -->
+            <b>{{ "BALI_LONG_DESC" | translate }}</b>
+        </div>
+
+        <div class="button_container">
+            <div class="button_desc">
+                <a href="https://form.jotform.com/222482492570054" target="_blank">
+          {{ "REG_TO_PARTICIPATE" | translate }}
+        </a>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div>
+        <!-- <ion-label style="font-family: 'Source Sans Pro', sans-serif">{{ "SCOREBOARDS" | translate }}
+        </ion-label>
+        <ion-item style="margin-top: 8px" class="scoreboard_item" lines="none">
+            <ion-select [interfaceOptions]="customAlertOptions" [okText]="translate.instant('CONFIRM')" [cancelText]="translate.instant('CANCEL')" interface="alert" [value]="scoreBoardSelected" (ionChange)="scordBoardChange($event)">
+                <ion-select-option [value]="scoreBoardItem.TOP_SALES">{{ "TOP_SALES_SEPT" | translate }}
+                </ion-select-option>
+                <ion-select-option [value]="scoreBoardItem.TOP_RECRUITERS">{{ "TOP_RECRUITERS_SEPT" | translate }}
+                </ion-select-option>
+                <ion-select-option [value]="scoreBoardItem.TOP_10K_RECRUITERS">{{ "TOP_10K_RECRUITERS" | translate }}
+                </ion-select-option>
+                <ion-select-option [value]="scoreBoardItem.TOP_RISING_RANGERS">{{ "TOP_RISING_RANGERS" | translate }}
+                </ion-select-option>
+            </ion-select>
+        </ion-item> -->
+        <br />
+        <!-- <div *ngIf="incentivesList.length > 0" class="table_wrapper"> -->
+        <div *ngIf="incentivesList.length == 0" class="table_wrapper">
+        <table style="
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0 6px;
+          margin-top: 8px;
+        ">
+                <tr>
+                    <th>{{ "RANK" | translate }}</th>
+                    <th>
+                        {{ "USERNAME" | translate }}
+                    </th>
+                    <th *ngIf="scoreBoardSelected == scoreBoardItem.TOP_SALES">
+                        {{ "BUDDY_SALES" | translate }}
+                    </th>
+                    <!-- <th>{{ "NUMBER_OF_BUDDIES" | translate }}</th> -->
+                    <th>{{ "COUNTRY" | translate }}</th>
+                </tr>
+                <tr *ngFor="let incentives of incentivesList; let rank = index" class="table_row">
+                    <td>{{ rank + 1 }}</td>
+                    <td>{{ incentives?.username }}</td>
+                    <td *ngIf="scoreBoardSelected == scoreBoardItem.TOP_SALES" >
+                        {{ incentives?.L1Sales }}
+                    </td>
+                    <!-- <td *ngIf="scoreBoardSelected == scoreBoardItem.TOP_SALES">
+                        {{ incentives?.NoOfL1Users }}
+                    </td> -->
+                    <!-- <td>{{ incentives?.NoOfL1Buddies }}</td> -->
+                    <td>{{ incentives?.Country }}</td>
+
+                </tr>
+            </table>
+        </div>
+        <!-- <div *ngIf="incentivesList.length == 0" class="table_wrapper"> -->
+        <div *ngIf="incentivesList.length > 0" class="table_wrapper">
+            <div style="text-align: center" class="table_row">
+                {{ "UPGRADING_SYSTEM" | translate }}
+            </div>
+        </div>
+        <br />
+        <!-- <ng-container *ngIf="
+        scoreBoardSelected == scoreBoardItem.TOP_10K_RECRUITERS ||
+        scoreBoardSelected == scoreBoardItem.TOP_RISING_RANGERS
+      ">
+            <div *ngIf="incentivesList.length > 0" class="pagination_container">
+                <div class="total_page">
+                    {{ "SHOWING" | translate }} <b>{{ currentPage * 10 }}</b> of
+                    <b>{{ incentivesList.length }}</b>
+                </div>
+                <div class="pagination">
+                    <div class="pagination_cursor">
+                        <ion-icon (click)="changePage('-')" name="chevron-back-outline"></ion-icon>
+                    </div>
+                    <div [ngClass]="currentPage == a ? 'active_pagination' : ''" *ngFor="let a of [].constructor(incentivesList.length / 10)">
+                        {{ a }}
+                    </div>
+                    <div class="pagination_cursor">
+                        <ion-icon (click)="changePage('+')" name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </ng-container> -->
+    </div>
+</div>
+

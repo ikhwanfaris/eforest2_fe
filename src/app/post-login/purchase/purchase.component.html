@@ -1,0 +1,303 @@
+<div>
+    <div class="package_title">
+        <b>{{ "CHOOSE_YOUR_PACKAGE" | translate }}</b>
+    </div>
+    <br />
+    <div class="package_container">
+        <ion-row class="ion-hide-md-down">
+            <ion-col size="2">
+                <div class="package_desc_container">
+                    <div class="package_desc">
+                        {{ "PACKAGE" | translate }} <br />{{ "CODE" | translate }}
+                    </div>
+                    <div class="package_desc" style="justify-content: space-between">
+                        {{ "LOVE_TREE" | translate }}<br />{{ "TO_PLANT" | translate }}
+                        <img src="../../../assets/images/icon-love-tree.png" />
+                    </div>
+                    <div class="package_desc" style="justify-content: space-between">
+                        {{ "EARTH_TREE" | translate }}<br />{{ "TO_PLANT" | translate }}
+                        <img src="../../../assets/images/icon-earth-tree.png" />
+                    </div>
+                    <div class="package_desc">{{ "SEEDS" | translate }}</div>
+                    <div class="package_desc">
+                        {{ "DAILY_FRUIT" | translate }}<br />{{ "YIELD" | translate }}
+                    </div>
+                    <div class="package_desc">{{ "PRICE" | translate }}</div>
+                    <div class="package_desc">{{ "QUANTITY" | translate }}</div>
+                </div>
+            </ion-col>
+            <ng-container *ngIf="seedPackages?.length > 0">
+                <ng-container *ngFor="let packages of seedPackages; let i = index">
+                    <ion-col size="2">
+                        <div class="package_selection" [ngClass]="getPackageClass(i)">
+                            <div class="package_desc huge_text">{{ packages?.name }}</div>
+                            <div class="package_desc">
+                                {{ packages?.love_tree | currency: " ":"symbol":"0.0-0" }}
+                            </div>
+                            <div class="package_desc">
+                                {{ packages?.earth_tree | currency: " ":"symbol":"0.0-0" }}
+                            </div>
+                            <div class="package_desc">
+                                {{ packages?.seed_amount | currency: " ":"symbol":"0.0-0" }}
+                            </div>
+                            <div class="package_desc">{{ packages?.growth_pct }}%</div>
+                            <div class="package_desc">
+                                {{ packages?.price | currency: " ":"symbol":"0.0-0" }} USDT
+                            </div>
+                            <div class="wrapper">
+                                <button class="plusminus minus" (click)="handleMinus(i)">
+                                    <ion-icon name="remove"></ion-icon>
+                                </button>
+                                <!-- <div>|</div> -->
+                                <input min="1" (keyup)="valueChange($event.srcElement, i)" type="number" class="num" [value]="packageQuantity[i].quantity" />
+                                <!-- <div>|</div> -->
+                                <button class="plusminus add" (click)="handlePlus(i)">
+                                    <ion-icon name="add"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="purchase-btn">
+                                <button (click)="purchaseOption(packages?.id, i, packages?.price)" class="package_purchase">
+                                    <b>{{ "PURCHASE" | translate }}</b>
+                                </button>
+                            </div>
+                            <!-- <div class="replant-btn">
+                <button
+                  class="package_purchase"
+                  (click)="replantPackage(packages?.id, i)"
+                >
+                  <b>{{ "REPLANT" | translate }}</b>
+                </button>
+              </div> -->
+                        </div>
+                    </ion-col>
+                </ng-container>
+            </ng-container>
+        </ion-row>
+
+        <ion-row class="ion-hide-md-up">
+            <ion-col sizeXs="6" sizeSm="4">
+                <div class="package_desc_container">
+                    <div class="package_desc">
+                        {{ "PACKAGE" | translate }} <br />{{ "CODE" | translate }}
+                    </div>
+                    <div class="package_desc" style="justify-content: space-between">
+                        {{ "LOVE_TREE" | translate }}<br />{{ "TO_PLANT" | translate }}
+                        <img src="../../../assets/images/icon-love-tree.png" />
+                    </div>
+                    <div class="package_desc" style="justify-content: space-between">
+                        {{ "EARTH_TREE" | translate }}<br />{{ "TO_PLANT" | translate }}
+                        <img src="../../../assets/images/icon-earth-tree.png" />
+                    </div>
+                    <div class="package_desc">{{ "SEEDS" | translate }}</div>
+                    <div class="package_desc">
+                        {{ "DAILY_FRUIT" | translate }}<br />{{ "YIELD" | translate }}
+                    </div>
+                    <div class="package_desc">{{ "PRICE" | translate }}</div>
+                    <div class="package_desc">{{ "QUANTITY" | translate }}</div>
+                </div>
+            </ion-col>
+            <ion-col sizeXs="6" sizeSm="8">
+                <swiper [config]="swiperConfig" (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)">
+                    <ng-container *ngIf="seedPackages?.length > 0">
+                        <ng-container *ngFor="let packages of seedPackages; let i = index">
+                            <ng-template swiperSlide>
+                                <div class="package_selection" [ngClass]="getPackageClass(i)">
+                                    <div class="package_desc huge_text">{{ packages?.name }}</div>
+                                    <div class="package_desc">
+                                        {{ packages?.love_tree | currency: " ":"symbol":"0.0-0" }}
+                                    </div>
+                                    <div class="package_desc">
+                                        {{ packages?.earth_tree | currency: " ":"symbol":"0.0-0" }}
+                                    </div>
+                                    <div class="package_desc">
+                                        {{ packages?.seed_amount | currency: " ":"symbol":"0.0-0" }}
+                                    </div>
+                                    <div class="package_desc">{{ packages?.growth_pct }}%</div>
+                                    <div class="package_desc">
+                                        {{ packages?.price | currency: " ":"symbol":"0.0-0" }} USDT
+                                    </div>
+                                    <div class="wrapper">
+                                        <button class="plusminus minus" (click)="handleMinus(i)">
+                      <ion-icon name="remove-outline"></ion-icon>
+                    </button>
+                                        <input min="1" (keyup)="valueChange($event.srcElement, i)" type="number" class="num" [value]="packageQuantity[i].quantity" />
+                                        <button class="plusminus add" (click)="handlePlus(i)">
+                      <ion-icon name="add-outline"></ion-icon>
+                    </button>
+                                    </div>
+                                    <div class="purchase-btn">
+                                        <button class="package_purchase" id="testing_purpose" (click)="purchaseOption(packages?.id, i, packages?.price)">
+                      <b>{{ "PURCHASE" | translate }}</b>
+                    </button>
+                                    </div>
+                                    <!-- <div class="replant-btn">
+                    <button
+                      class="package_purchase"
+                      (click)="replantPackage(packages?.id, i)"
+                    >
+                      <b>{{ "REPLANT" | translate }}</b>
+                    </button>
+                  </div> -->
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </ng-container>
+                </swiper>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <ion-modal [isOpen]="!!paymentUrl" (ionModalDidDismiss)="dismissModal()">
+        <ng-template>
+            <div class="site_container" style="height: 100%">
+                <ion-toolbar>
+                    <!-- <ion-title style="text-align: center; font-size: 25px;">Forget Password</ion-title> -->
+                    <ion-buttons slot="end">
+                        <ion-button slot="end" (click)="dismissModal()">
+                            <ion-icon color="white" name="close"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+                <iframe frameborder="0" width="100%" height="100%" [src]="paymentUrl"></iframe>
+            </div>
+        </ng-template>
+    </ion-modal>
+
+    <!-- <ion-modal class="seed_planted_container" [isOpen]="!!replantSeed" (ionModalDidDismiss)="dismissModalReplant()">
+        <ng-template>
+            <div class="site_container" style="height: 100%">
+                <ion-toolbar>
+                    <ion-buttons slot="end">
+                        <ion-button slot="end" (click)="dismissModalReplant()">
+                            <ion-icon color="white" name="close"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+                <div class="main_seed_container">
+                    <div class="project_subtitle">
+                        <b>{{ "REPLANT_SEED" | translate }}</b>
+                    </div>
+                    <div class="seed_container">
+                        <ion-row>
+                            <ion-col sizeLg="7" sizeXs="6">
+                                <div class="packages-seed">
+                                    <strong>{{ "QUANTITY" | translate }}: </strong>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeLg="5" sizeXs="6">
+                                <div class="packages-seed">
+                                    <div style="text-align: right">{{ packageQty }}</div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col sizeLg="7" sizeXs="6">
+                                <div class="packages-seed">
+                                    <strong>{{ "FEE_AMOUNT" | translate }}: </strong>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeLg="5" sizeXs="6">
+                                <div class="packages-seed">
+                                    <div style="text-align: right">
+                                        {{ feeAmount }} {{ "USDT" | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col sizeLg="7" sizeXs="7">
+                                <div class="packages-seed">
+                                    <strong>{{ "PAYMENT_AMOUNT" | translate }}: </strong>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeLg="5" sizeXs="5">
+                                <div class="packages-seed">
+                                    <div style="text-align: right">
+                                        {{ paymentAmount }} {{ "SEEDS" | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <div>
+                            <ion-checkbox style="min-width: 18px" mode="md" (ionChange)="changeEvent($event)"></ion-checkbox>
+                            <ion-label class="tnc_checkbox">
+                                {{ "AGREE_REPLANT" | translate }}</ion-label>
+                            <ion-row>
+                                <ion-col sizeLg="12" sizeXs="12">
+                                    <button style="margin-top: 20px" class="btn_login button_desc button_submit" type="submit" [disabled]="!toggleBool" (click)="confirmReplant()">
+                    {{ "CONFIRM" | translate }}
+                  </button>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ion-modal> -->
+
+    <ion-modal class="seed_planted_container" [isOpen]="!!paymentUSDT" (ionModalDidDismiss)="dismissModalUsdtBalance()">
+        <ng-template>
+            <div class="site_container" style="height: 100%">
+                <ion-toolbar>
+                    <!-- <ion-title style="text-align: center; font-size: 25px;">Forget Password</ion-title> -->
+                    <ion-buttons slot="end">
+                        <ion-button slot="end" (click)="dismissModalUsdtBalance()">
+                            <ion-icon color="white" name="close"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+                <div class="main_seed_container">
+                    <div class="project_subtitle">
+                        <b>{{ "USDT_WALLET_BALANCE" | translate }}</b>
+                    </div>
+                    <div class="seed_container">
+                        <ion-row>
+                            <ion-col sizeLg="7" sizeXs="6">
+                                <div class="packages-seed">
+                                    <strong>{{ "QUANTITY" | translate }}: </strong>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeLg="5" sizeXs="6">
+                                <div class="packages-seed">
+                                    <div style="text-align: right">{{ packageQty }}</div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col sizeLg="7" sizeXs="7">
+                                <div class="packages-seed">
+                                    <strong>{{ "PAYMENT_AMOUNT" | translate }}: </strong>
+                                </div>
+                            </ion-col>
+                            <ion-col sizeLg="5" sizeXs="5">
+                                <div class="packages-seed">
+                                    <div style="text-align: right">
+                                        {{ paymentAmount | currency: " ":"symbol":"0.0-2" }} {{ "USDT" | translate }}
+                                    </div>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <div>
+                            <!-- <ion-checkbox
+              style="min-width: 18px"
+              mode="md"
+              (ionChange)="changeEvent($event)"
+            ></ion-checkbox>
+            <ion-label class="tnc_checkbox">
+              {{ "AGREE_REPLANT" | translate }}</ion-label
+            > -->
+                            <ion-row>
+                                <ion-col sizeLg="12" sizeXs="12">
+                                    <button style="margin-top: 20px" class="btn_login button_desc button_submit" type="submit" (click)="confirmPurchaseUSDT()">
+                  {{ "CONFIRM" | translate }}
+                </button>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ion-modal>
+</div>

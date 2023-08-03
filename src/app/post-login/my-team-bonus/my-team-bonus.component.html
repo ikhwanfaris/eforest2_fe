@@ -1,0 +1,166 @@
+<div>
+  <div class="package_title">
+    <b>{{ "MY_EARNINGS" | translate }}</b>
+  </div>
+  <br /><br />
+
+  <ion-row>
+    <ion-col sizeXs="12" sizeSm="6">
+      <div class="total_planted_container">
+        <div class="total_planted_title">
+          <!-- <img src="../../../assets/images/icon-love-tree.png" style="margin-right: 16px" /> -->
+          <div class="total_planted_desc">
+            {{ "MAX_EARNINGS" | translate }} :
+          </div>
+        </div>
+        <div class="total_planted_value">
+          <b> {{ numberWithCommas(this.maxEarnings) }}</b>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col sizeXs="12" sizeSm="6">
+      <div class="total_planted_container">
+        <div class="total_planted_title">
+          <!-- <img src="../../../assets/images/icon-earth-tree.png" style="margin-right: 16px" /> -->
+          <div class="total_planted_desc">
+            {{ "TOTAL_EARNINGS" | translate }} :
+          </div>
+        </div>
+        <div class="total_planted_value">
+          <b> {{ numberWithCommas(this.totalEarnings) }}</b>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-col sizeXs="12" sizeSm="6">
+    <div class="max_earnings_desc"></div>
+  </ion-col>
+  <ion-col sizeXs="12" sizeSm="6">
+    <div class="total_earnings_desc"></div>
+  </ion-col>
+
+  <!-- <div class="filter_section">
+        <div style="margin-right: 12px; min-width: 115px">
+            <b>{{ "FILTER_BY_DATE" | translate }} </b>
+        </div>
+        <div class="date_filter_container">
+            <div class="date_filter" [ngClass]="range_selected == 1 ? 'active_filter' : ''" (click)="rangeChange(1)">
+                {{ "TODAY" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="range_selected == 2 ? 'active_filter' : ''" (click)="rangeChange(2)">
+                {{ "YESTERDAY" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="range_selected == 7 ? 'active_filter' : ''" (click)="rangeChange(7)">
+                {{ "LAST_7_DAYS" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="range_selected == 30 ? 'active_filter' : ''" (click)="rangeChange(30)">
+                {{ "LAST_30_DAYS" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="range_selected == 60 ? 'active_filter' : ''" (click)="rangeChange(60)">
+                {{ "LAST_60_DAYS" | translate }}
+            </div>
+            <div class="date_filter" [ngClass]="range_selected == 90 ? 'active_filter' : ''" (click)="rangeChange(90)">
+                {{ "LAST_90_DAYS" | translate }}
+            </div>
+        </div>
+    </div> -->
+  <br /><br />
+  <div *ngIf="this.earningList.data.items.length > 0" class="table_wrapper">
+    <table
+      id="teamTable"
+      style="width: 100%; border-collapse: separate; border-spacing: 0 6px"
+    >
+      <tr>
+        <th (click)="updateSortBy('datetime')">
+          {{ "DATE" | translate }}
+          <ion-icon
+            [id]="'arrows_team_' + 'datetime'"
+            [name]="'caret-down-outline'"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('username')">
+          {{ "USERNAME" | translate }}
+          <ion-icon
+            [id]="'arrows_team_' + 'username'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('bonus_amount')">
+          {{ "BONUS_AMOUNT" | translate }}
+          <ion-icon
+            [id]="'arrows_team_' + 'bonus_amount'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('type')">
+          {{ "TYPE" | translate }}
+          <ion-icon
+            [id]="'arrows_team_' + 'type'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('dimension')">
+          {{ "DIMENSION" | translate }}
+          <ion-icon
+            [id]="'arrows_team_' + 'dimension'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+      </tr>
+      <ng-container *ngIf="this.is_loading == false">
+        <tr *ngFor="let bonus of this.earningList.data.items" class="table_row">
+          <td>
+            {{ bonus?.datetime }}
+          </td>
+          <td>{{ bonus?.username }}</td>
+          <td>
+            {{ bonus?.bonus_amount | currency : " " : "symbol" : "0.0-2" }}
+          </td>
+          <td>
+            {{ bonus?.type }}
+          </td>
+          <td>
+            {{ bonus?.dimension }}
+          </td>
+        </tr>
+      </ng-container>
+    </table>
+    <div *ngIf="this.earningList.data.items.length == 0" class="table_wrapper">
+      <div style="text-align: center" class="table_row">
+        {{ "NO_DATA" | translate }}
+      </div>
+    </div>
+    <br />
+  </div>
+  <div *ngIf="earningList.data.items.length > 0" class="pagination_container">
+    <div class="total_page">
+      {{ "SHOWING" | translate }}
+      <b
+        >{{ earningList?.data?.current_item_position_start }} to
+        {{ earningList?.data?.current_item_position_end }}</b
+      >
+      of
+      <b>{{ totalEntry }}</b>
+    </div>
+    <div class="pagination">
+      <div class="pagination_cursor">
+        <ion-icon (click)="lessPage()" name="chevron-back-outline"></ion-icon>
+      </div>
+      <div
+        (click)="changePage(a)"
+        [ngClass]="this.page == a ? 'active_pagination' : ''"
+        *ngFor="let a of this.displayPages"
+      >
+        {{ a }}
+      </div>
+      <div class="pagination_cursor">
+        <ion-icon (click)="addPage()" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="this.is_loading == true"></div>
+</div>

@@ -1,0 +1,35 @@
+.language_container {
+    display: flex;
+    align-items: center;
+    padding: 12px 6px;
+    margin: 8px 0;
+    border-bottom: 1px solid lightgrey;
+    cursor: pointer;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.language_container:hover {
+    opacity: 0.6;
+}
+
+.language_container img {
+    max-width: 32px;
+    margin-right: 12px;
+}
+
+ion-list {
+    padding: 12px 15px;
+    overflow: auto;
+}
+
+.lang_title {
+    font-size: 28px;
+    padding: 12px 0;
+    font-family: "Grandstander", cursive;
+}
+
+.lang_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

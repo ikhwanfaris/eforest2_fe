@@ -1,0 +1,38 @@
+<!-- <div class="container" id="container"> -->
+<div class="game_container" id="game_container">
+    <ion-button fill="clear" slot="end" (click)="onDismiss()" style="position: absolute; right: 0">
+        <ion-icon color="dark" name="close"></ion-icon>
+    </ion-button>
+    <img class="center-block img-responsive" />
+    <div class="game_buttons">
+        <ng-container *ngIf="!isPlanted">
+            <img src=".././../../assets/images/planting/00 img_0.png" id="not_planted_1" class="center-block img-responsive" (click)="plantSeeds(1)" />
+            <img src=".././../../assets/images/planting/02 img_1Grey.png" id="not_planted_2" class="center-block img-responsive disabled" (click)="plantSeeds(2)" />
+            <img src=".././../../assets/images/planting/04 img_2Grey.png" id="not_planted_3" class="center-block img-responsive disabled" (click)="plantSeeds(3)" />
+            <img src=".././../../assets/images/planting/06 img_3Grey.png" id="not_planted_4" class="center-block img-responsive disabled" (click)="plantSeeds(4)" />
+        </ng-container>
+        <ng-container *ngIf="isPlanted">
+            <img src=".././../../assets/images/planting/06 img_3.png" id="planted_1" class="center-block img-responsive" (click)="dayCount >= 31 ? waterSeeds() : germinateSeeds()" />
+
+            <!-- <ng-container *ngIf="dayCount >= 31">
+                <img *ngIf="canFertilise == true" src=".././../../assets/images/planting/08 img_4.png" id="fertilize" class="center-block img-responsive" (click)="fertiliseSeeds()" />
+                <img *ngIf="canFertilise == false" src=".././../../assets/images/planting/08 img_4Grey.png" id="non_fertilize" class="center-block img-responsive disabled" />
+            </ng-container> -->
+        </ng-container>
+        <ng-container *ngIf="dayCount >= 31">
+            <img src=".././../../assets/images/planting/basket_color.png" id="harvest" class="center-block img-responsive" (click)="havestBasket()" />
+        </ng-container>
+    </div>
+</div>
+<!-- </div> -->
+
+<!-- <div id="preload" style="display: none">
+    <div id="preload_img">
+        <img src="../../../assets/images/planting/01-eF-planting-s1-1.gif" />
+        <img src="../../../assets/images/planting/02-eF-planting-POS-s1-1.gif" />
+        <img src="../../../assets/images/planting/03-eF-planting-s1-2.gif" />
+        <img src="../../../assets/images/planting/04-eF-planting-s1-3.gif" />
+        <img src="../../../assets/images/planting/05-eF-planting-POS-s1-3.gif" />
+        <img src="../../../assets/images/planting/06-eF-planting-s1-4.gif" />
+    </div>
+</div> -->

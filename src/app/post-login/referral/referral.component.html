@@ -1,0 +1,51 @@
+<!-- <ion-content [fullscreen]="true"> -->
+<!-- <app-post-navbar> -->
+<div class="site_container">
+    <div class="home_container">
+        <!-- <img class="forest_gif" src="../../../assets/images/forest.gif"> -->
+        <!-- <div class="empty_space"></div> -->
+        <div class="referral-container">
+            <!-- <img src="../../assets/images/Forest.png"> -->
+            <!-- <ion-header no-border> -->
+            <ion-toolbar color="transparent">
+                <ion-buttons slot="end">
+                    <ion-button color="dark" (click)="onDismiss()">
+                        <ion-icon name="close" slot="icon-only"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+            <!-- </ion-header> -->
+            <!-- <ion-button slot="end" (click)="onDismiss()">
+                <ion-icon color="dark" name="close"></ion-icon>
+            </ion-button> -->
+            <ion-row>
+                <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+                    <!-- <div class="project_title">
+                    <div class="dash">e</div>
+                    Forest
+                </div> -->
+                    <div class="project_subtitle">
+                        <b>{{ "REFERRAL" | translate }}</b>
+                    </div>
+                    <br />
+                    <h2 class="ion-text-center">
+                        {{ "REFER_YOUR_FRIEND_BY" | translate }}<br /> {{ "SCANNING_THIS_QR_CODE" | translate }}
+                    </h2>
+                    <div class="canvas">
+                        <canvas id="canvas"></canvas> <img src="" alt="" id="image" />
+                    </div>
+                    <br />
+                    <div style="display: flex; justify-content: center">
+                        <div class="copyBtn" (click)="copyString()">
+                            {{ "COPY" | translate }}
+                        </div>
+                    </div>
+                    <br />
+                </ion-col>
+            </ion-row>
+        </div>
+        <!-- <img style="margin-bottom: -4px;" src="../../assets/images/e-forest-website-footer-with-text.png"> -->
+    </div>
+</div>
+<!-- </app-post-navbar> -->
+<!--</ion-content> -->

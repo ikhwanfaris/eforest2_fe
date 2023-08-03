@@ -1,0 +1,156 @@
+.container {
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+    // max-width: 750px;
+}
+
+.package_title {
+    font-size: 32px;
+}
+
+.gemBtn {
+    font-size: 18px;
+    background-color: #f6c03a;
+    cursor: pointer;
+    padding: 15px 12px;
+    border-radius: 15px;
+    width: -moz-fit-content;
+    width: 100%;
+    min-width: 150px;
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.gemBtn:hover {
+    opacity: 0.8;
+}
+
+.activeClass {
+    background: #16402a;
+    color: #fff;
+    // --background: var(--ion-color-primary);
+    // --color: var(--ion-color-light);
+    box-shadow: none;
+}
+
+.summary {
+    color: var(--ion-color-medium);
+    font-size: 13px;
+    margin-bottom: 12px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.total {
+    background: var(--ion-color-light-tint);
+    color: var(--ion-color-dark-tint);
+    padding: 18px 12px;
+    align-items: center;
+    border-radius: 8px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: "Source Sans Pro", sans-serif;
+    margin-bottom: 8px;
+}
+
+.button_submit {
+    font-size: 18px;
+    background-color: #f6c03a;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%;
+    min-width: 200px;
+    // text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+    margin: 18px auto 30px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 4px 4px 2px 0px #413c3c7d;
+    border: 1px solid #000000;
+    color: #000000;
+}
+
+.button_submit:hover {
+    opacity: 0.6;
+}
+
+.site_container {
+    background: url(../../../assets/images/bg-register-and-login-page.png);
+    ;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.project_subtitle {
+    font-family: "Grandstander", cursive;
+    font-size: 32px;
+    margin: 20px auto 0px;
+}
+
+.otp_btn {
+    font-family: "Source Sans Pro", sans-serif;
+    --background: #f6c03a;
+    color: #000;
+    font-size: 16px;
+    text-transform: inherit;
+    font-weight: 600;
+    height: 32px;
+    --border-radius: 8px;
+    letter-spacing: inherit;
+}
+
+ion-item.item-has-focus>ion-label {
+    color: red !important;
+    font-weight: 700;
+}
+
+ion-input,
+ion-label {
+    font-family: "Source Sans Pro", sans-serif !important;
+}
+
+ion-item {
+    // --background: rgba(255, 255, 255, 0.4);
+    --highlight-color-focused: red;
+    --border-width: 0;
+    border: 2px dashed #fff;
+    // --color-focused: #FFFC28;
+    font-size: 18px;
+    border-radius: 16px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #b3b3b3;
+    background: #94bc7e;
+    // background: linear-gradient(#fff, #fff) padding-box
+    // /* Don't extend this to border */
+    // , linear-gradient( to top, #65b963 0%, #15a88d 50%, #169ca0 60%, #1891b1 70%, #198bbb 80%, #1a8abf 100%);
+    //background: linear-gradient(#fff,#fff) padding-box /* Don't extend this to border */, linear-gradient(to bottom, #4fc3f7, #ab5ca4 49%, #ff512f) border-box;
+    color: #000;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+@media (max-width: 576px) {
+    .button_submit {
+        width: fit-content;
+        margin-top: 6px;
+    }
+    .package_title {
+        font-size: 28px;
+    }
+    .gemBtn {
+        // min-width: 90px;
+        width: unset;
+        min-width: -webkit-fill-available;
+    }
+}

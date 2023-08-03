@@ -1,0 +1,369 @@
+.activeHash {
+    border-bottom: 2px solid;
+    padding-bottom: 2px;
+}
+
+.nav_btn {
+    font-size: 24px;
+    color: #404040;
+}
+
+.logout {
+    color: var(--ion-color-danger);
+}
+
+.fixed {
+    position: fixed;
+    z-index: 999;
+    background: #caedff;
+    box-shadow: 0px 3px 8px 0px lightslategrey;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.nav_logo {
+    padding: 48px 24px 24px;
+    text-align: center;
+}
+
+.menu_list {
+    background: aliceblue;
+}
+
+.menu_list ion-item {
+    --background: aliceblue;
+    font-size: 24px;
+    cursor: pointer;
+    // color: #000;
+}
+
+.menu_active {
+    --background: rgb(93 183 79 / 60%);
+}
+
+.navbar_container {
+    background: url("../../../assets/images/bg-register-and-login-page.png");
+    // height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 0 0 0 15px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    // height: -webkit-fill-available;
+}
+
+// .navbar_container::-webkit-scrollbar-thumb {
+//     background-color: #31a84b;
+//     border-radius: 10px;
+//     width: 4px;
+//     height: 4px;
+// }
+// .navbar_container::-webkit-scrollbar {
+//     background-color: #fff;
+//     width: 4px;
+//     height: 4px;
+// }
+.side_menu_desktop {
+    background: #fff;
+    // width: 20%;
+    border-radius: 20px;
+    // height: 100%;
+    padding-bottom: 12px;
+    max-width: 280px;
+    position: relative;
+    margin-top: 24px;
+}
+
+.side_menu_button {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0 24px 8px;
+    font-size: 18px;
+    padding: 8px 24px;
+    cursor: pointer;
+}
+
+.side_menu_button:hover,
+.support_btn:hover {
+    background: rgba(232, 191, 73, 0.2);
+    border-radius: 12px;
+}
+
+.side_menu_button_active {
+    font-weight: bold;
+    background: #f6c03a;
+    border-radius: 12px;
+}
+
+.side_menu_button_active:hover {
+    background: #f6c03a;
+}
+
+.side_menu_logo {
+    display: flex;
+    justify-content: center;
+    margin: 12px auto;
+    padding: 0 12px;
+    max-width: 225px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar_right {
+    display: flex;
+    justify-content: end;
+}
+
+.navbar_wrapper {
+    padding-top: 24px;
+}
+
+.navbar_item {
+    display: flex;
+    align-items: center;
+}
+
+.navbar_item img {
+    margin-right: 12px;
+}
+
+.navbar_desc {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+}
+
+.navbar_border {
+    // background: linear-gradient( to top, #65b963 0%, #15a88d 50%, #169ca0 60%, #1891b1 70%, #198bbb 80%, #1a8abf 100%);
+    background: #94BC7E;
+    padding: 2px 2px;
+    border-radius: 12px;
+    margin: 0 24px;
+    height: fit-content;
+}
+
+.navbar_inner {
+    background: #fff;
+    padding: 8px 16px;
+    border-radius: 10px;
+}
+
+.navbar_padding {
+    margin: 0 8px;
+}
+
+.logout_button {
+    color: #eb445a;
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0 24px 8px;
+    font-size: 20px;
+    padding: 18px 24px;
+    cursor: pointer;
+}
+
+.navbar_logout {
+    cursor: pointer;
+}
+
+.navbar_logout:hover {
+    opacity: 0.6;
+}
+
+.support_btn {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0 24px 12px;
+    font-size: 18px;
+    padding: 8px 24px;
+    cursor: pointer;
+}
+
+.support_btn a {
+    text-decoration: unset;
+    display: block;
+    color: #000;
+}
+
+.info-pop {
+    font-family: "Source Sans Pro", sans-serif;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffff;
+}
+
+ion-popover {
+    --background: transparent;
+    --box-shadow: none;
+}
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+
+.accordion {
+    // background-color: #eee;
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0 24px 12px;
+    font-size: 18px;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion_button {
+    margin: 0 24px 4px 48px;
+    font-size: 18px;
+}
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+.active {
+    background-color: #ccc;
+}
+
+
+/* Style the accordion panel. Note: hidden by default */
+
+.panel {
+    // padding: 0 18px;
+    background-color: white;
+    // max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.announcement_btn {
+    cursor: pointer;
+}
+
+.navbar_inner:hover {
+    // opacity: 0.6;
+    cursor: pointer;
+    background: #f1faf3;
+}
+
+.menu_content {
+    position: absolute;
+    height: 100%;
+    overflow-y: auto;
+    width: 100%;
+    padding-bottom: 30px;
+    padding-right: 15px;
+}
+
+
+/* Handle */
+
+.menu_content::-webkit-scrollbar-thumb,
+.filter_section::-webkit-scrollbar-thumb,
+.navbar_row::-webkit-scrollbar-thumb {
+    background-color: #94bc7e;
+    border-radius: 10px;
+    width: 4px;
+    height: 4px;
+}
+
+.menu_content::-webkit-scrollbar,
+.filter_section::-webkit-scrollbar,
+.navbar_row::-webkit-scrollbar {
+    background-color: #fff;
+    width: 4px;
+    height: 6px;
+}
+
+.menu_content::-webkit-scrollbar-thumb:hover,
+.filter_section::-webkit-scrollbar-thumb:hover,
+.navbar_row::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: #555;
+}
+
+.marquee_item {
+    display: flex;
+    align-items: center;
+}
+
+.marquee_item img {
+    margin-right: 12px;
+    max-width: 24px;
+    margin: 0 12px;
+}
+
+.marquee_item span {
+    font-size: 24px;
+    font-family: "Grandstander", cursive;
+}
+
+.marquee_item div {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.marquee_container {
+    display: flex;
+    padding: 6px 0;
+    justify-content: space-around;
+}
+
+.marquee_container {
+    background: #16402a;
+    padding: 0.5rem;
+    overflow: hidden;
+    color: #fff;
+}
+
+@keyframes slide {
+    0% {
+        -moz-transform: translateX(80%);
+        -webkit-transform: translateX(80%);
+    }
+    100% {
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+@media (max-width: 576px) {
+    .marquee_container {
+        width: max-content;
+    }
+    .marquee_container {
+        animation: slide 7s linear infinite;
+    }
+    .side_menu_desktop {
+        margin-top: 0;
+    }
+    .navbar_container {
+        height: 100%;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 1) 20%, #fce8b8 100%);
+        //background: url("../../../assets/images/bg-register-and-login-page-m.png");
+    }
+    .navbar_padding {
+        margin: 0 4px;
+    }
+    .navbar_inner {
+        padding: 4px 12px;
+    }
+    .navbar_desc {
+        font-size: 14px;
+    }
+    .side_menu_button,
+    .logout_button,
+    .support_btn,
+    .accordion {
+        font-size: 18px;
+        margin: 0 24px 8px;
+    }
+    .accordion_button {
+        margin-left: 48px;
+    }
+}

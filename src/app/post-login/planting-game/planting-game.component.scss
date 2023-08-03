@@ -1,0 +1,48 @@
+.game_container {
+    background: url(../../../assets/images/planting/eF-planting-PRE-s1-1-1080p.gif);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    position: relative;
+}
+
+.game_buttons {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 35px;
+    width: 100%;
+}
+
+.game_buttons img {
+    max-width: 100px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.game_buttons img:hover {
+    opacity: 0.6;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.disabled:hover {
+    opacity: 0;
+}
+
+@media (max-width: 576px) {
+    .game_buttons img {
+        max-width: 80px;
+    }
+    .game_buttons {
+        bottom: 50px;
+    }
+    .game_container {
+        // background: url(../../../assets/images/planting/eF-planting-PRE-s1-1-1080p_mobile.gif);
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

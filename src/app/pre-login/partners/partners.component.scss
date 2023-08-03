@@ -1,0 +1,174 @@
+.banner_container {
+    background: url("../../../assets/images/partners/top-bg-love-tree-and-earth-tree-story.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    padding: 200px 15px;
+}
+
+.banner_title {
+    font-weight: bold;
+    font-size: 52px;
+    padding-top: 65px;
+    text-align: center;
+    text-shadow: 3px 3px 1px #fff;
+}
+
+.tree_tab {
+    margin: 0 8px;
+    display: flex;
+    justify-content: space-evenly;
+    height: -moz-fit-content;
+    height: fit-content;
+    align-items: center;
+    width: 180px;
+    background: #f6c03a;
+    border-radius: 8px;
+    padding: 4px 6px;
+}
+
+.tree_tab:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.tab_container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 24px;
+    padding: 0 15px;
+}
+
+.content_title {
+    margin: auto;
+    max-width: 350px;
+    font-size: 32px;
+    text-align: center;
+}
+
+.content_title img {
+    width: 52px;
+}
+
+.content_body {
+    display: flex;
+}
+
+.content_desc {
+    font-family: "Source Sans Pro", sans-serif;
+    width: 50%;
+    margin: auto 15px;
+    font-size: 18px;
+}
+
+.content_ending {
+    font-family: "Source Sans Pro", sans-serif;
+    margin: auto 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.content_image {
+    width: 50%;
+    display: flex;
+    height: fit-content;
+    align-self: center;
+}
+
+.first_word {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.login_btn {
+    // background: linear-gradient( to top, #65b963 0%, #15a88d 50%, #169ca0 60%, #1891b1 70%, #198bbb 80%, #1a8abf 100%);
+    border-radius: 15px;
+    width: 120px;
+    display: grid;
+    padding: 2px;
+    width: fit-content;
+    align-items: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.login_btn a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.nav_btn {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    border-radius: 12px;
+    margin: 0px;
+    padding: 12px 24px;
+    align-items: center;
+    // background: #fff;
+    background: #f6c03a;
+    color: #000;
+}
+
+.nav_btn:hover {
+    opacity: 0.6;
+}
+
+.buynow_container {
+    text-align: center;
+}
+
+.buynow {
+    font-family: "Source Sans Pro", sans-serif;
+    background: #ebf3e8;
+    padding: 18px 24px;
+    border-radius: 20px;
+    font-size: 18px;
+    margin: 0 4px;
+}
+
+#lovetree,
+#earthtree {
+    scroll-margin: 100px;
+}
+
+.partner_container {
+    background: #16402a;
+    color: #fff;
+    padding: 60px 0 48px;
+}
+
+.partner_title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .banner_title {
+        font-size: 36px;
+    }
+    .content_desc,
+    .content_ending,
+    .buynow {
+        font-size: 18px;
+        margin-bottom: 42px;
+    }
+    .content_body {
+        margin: 24px 0;
+    }
+    .reverse_body {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .normal_body {
+        flex-direction: column;
+        align-items: center;
+    }
+    .content_desc,
+    .content_image {
+        width: unset;
+        text-align: center;
+    }
+}

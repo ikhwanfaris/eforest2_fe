@@ -1,0 +1,180 @@
+<div class="filter_section2">
+  <div style="margin-right: 12px; min-width: 115px; padding-bottom: 10px">
+    <b> {{ "TRANSACTION_TYPE" | translate }} :</b>
+  </div>
+  <div style="margin-right: 12px; min-width: 115px">
+    <div class="date_filter_container">
+      <div
+        class="date_filter"
+        [ngClass]="type_selected == 'buy' ? 'active_filter' : ''"
+        (click)="typeChange('buy')"
+      >
+        {{ "BUY" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="type_selected == 'sell' ? 'active_filter' : ''"
+        (click)="typeChange('sell')"
+      >
+        {{ "SELL" | translate }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="filter_section">
+  <div style="margin-right: 12px; min-width: 115px">
+    <b> {{ "FILTER_BY_DATE" | translate }} </b>
+  </div>
+  <div class="date_filter_container">
+    <div
+      class="date_filter"
+      [ngClass]="range_selected == 1 ? 'active_filter' : ''"
+      (click)="rangeChange(1)"
+    >
+      {{ "TODAY" | translate }}
+    </div>
+    <div
+      class="date_filter"
+      [ngClass]="range_selected == 2 ? 'active_filter' : ''"
+      (click)="rangeChange(2)"
+    >
+      {{ "YESTERDAY" | translate }}
+    </div>
+    <div
+      class="date_filter"
+      [ngClass]="range_selected == 7 ? 'active_filter' : ''"
+      (click)="rangeChange(7)"
+    >
+      {{ "LAST_7_DAYS" | translate }}
+    </div>
+    <div
+      class="date_filter"
+      [ngClass]="range_selected == 30 ? 'active_filter' : ''"
+      (click)="rangeChange(30)"
+    >
+      {{ "LAST_30_DAYS" | translate }}
+    </div>
+    <div
+      class="date_filter"
+      [ngClass]="range_selected == 60 ? 'active_filter' : ''"
+      (click)="rangeChange(60)"
+    >
+      {{ "LAST_60_DAYS" | translate }}
+    </div>
+    <div
+      class="date_filter"
+      [ngClass]="range_selected == 90 ? 'active_filter' : ''"
+      (click)="rangeChange(90)"
+    >
+      {{ "LAST_90_DAYS" | translate }}
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div style="text-align: center" class="table_row">
+    {{ "NO_DATA" | translate }}
+  </div>
+</ng-template>
+
+<br /><br />
+<div *ngIf="this.historyList.length > 0; else noData" class="table_wrapper">
+  <table
+    style="width: 100%; border-collapse: separate; border-spacing: 0 6px"
+    id="p2pTable"
+  >
+    <tr>
+      <th (click)="sortTable('ad_id')">
+        {{ "TRADE_ID" | translate }}
+        <ion-icon
+          [id]="'p2p_seeds_' + 'ad_id'"
+          [name]="'caret-up-outline'"
+        ></ion-icon>
+      </th>
+      <th (click)="sortTable('created_datetime')">
+        {{ "CREATED_AT" | translate }}
+        <ion-icon
+          [id]="'p2p_seeds_' + 'created_datetime'"
+          [name]="'caret-up-outline'"
+          [hidden]="true"
+        ></ion-icon>
+      </th>
+      <th (click)="sortTable('ref_num')">
+        {{ "REFERENCE_NUMBER" | translate }}
+        <ion-icon
+          [id]="'p2p_seeds_' + 'ref_num'"
+          [name]="'caret-up-outline'"
+          [hidden]="true"
+        ></ion-icon>
+      </th>
+      <th (click)="sortTable('amount')">
+        {{ "AMOUNT" | translate }}
+        <ion-icon
+          [id]="'p2p_seeds_' + 'amount'"
+          [name]="'caret-up-outline'"
+          [hidden]="true"
+        ></ion-icon>
+      </th>
+      <th (click)="sortTable('step_status')">
+        {{ "STATUS" | translate }}
+        <ion-icon
+          [id]="'p2p_seeds_' + 'step_status'"
+          [name]="'caret-up-outline'"
+          [hidden]="true"
+        ></ion-icon>
+      </th>
+    </tr>
+    <ng-container *ngFor="let history of historyList; let i = index">
+      <tr *ngIf="i < rowPerPage" class="table_row">
+        <td>
+          {{ history?.ad_id ? history.ad_id : "-" }}
+        </td>
+        <td>
+          {{ history?.created_datetime }}
+        </td>
+        <td>
+          {{ history?.ref_num ? history.ref_num : "-" }}
+        </td>
+        <td>
+          {{ history?.amount ? numberWithCommas(history?.amount) : "-" }}
+        </td>
+        <td>
+          {{ history?.step_status ? (history?.step_status | translate) : "-" }}
+        </td>
+        <td>
+          <ion-button
+            [hidden]="!history?.can_cancel"
+            color="danger"
+            [disabled]="!history?.can_cancel"
+            (click)="cancelTrade(history?.ad_id)"
+            >{{ "CANCEL_TRADE" | translate }}
+          </ion-button>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+</div>
+
+<br />
+<div *ngIf="this.historyList.length > 0" class="pagination_container">
+  <div class="total_page">
+    {{ "SHOWING" | translate }} <b>{{ this.entry }}</b> of
+    <b>{{ totalEntry }}</b>
+  </div>
+  <div class="pagination">
+    <div class="pagination_cursor">
+      <ion-icon (click)="lessPage()" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div
+      [ngClass]="this.page == a ? 'active_pagination' : ''"
+      *ngFor="let a of this.displayPages"
+      (click)="changePage(a)"
+    >
+      {{ a }}
+    </div>
+    <div class="pagination_cursor">
+      <ion-icon (click)="addPage()" name="chevron-forward-outline"></ion-icon>
+    </div>
+  </div>
+</div>

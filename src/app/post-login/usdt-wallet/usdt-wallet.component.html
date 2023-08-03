@@ -1,0 +1,428 @@
+<div>
+  <div class="package_title">
+    <div>
+      <img src="../../../assets/images/icon-usdt-wallet-bigger.png" />
+      <b>{{ "USDT_WALLET" | translate }}</b>
+    </div>
+    <div class="button_container">
+      <div class="button_desc" (click)="isDepositOpen = true">
+        {{ "DEPOSIT_USDT" | translate }}
+      </div>
+      <div class="button_desc" (click)="isWithdrawOpen = true">
+        {{ "WITHDRAW_USDT" | translate }}
+      </div>
+    </div>
+    <!-- <form [formGroup]="form" (ngSubmit)="purchasePackage()">
+            <ion-item>
+                <ion-label style="font-family: 'Source Sans Pro', sans-serif" position="fixed">{{ "AMOUNT" | translate }} :
+                    <span style="color: red">*</span></ion-label>
+                <ion-input style="font-family: 'Source Sans Pro', sans-serif" required detail-none formControlName="bef_name"></ion-input>
+                <button slot="end" class="button_desc" type="submit">
+          <b>{{ "DEPOSIT_USDT" | translate }}</b>
+        </button>
+            </ion-item>
+        </form> -->
+  </div>
+
+  <!-- <div *ngIf="submitted && form.controls.password.errors" class="validator-error">
+                  {{'PLEASE_ENTER_A_VALID_PASSWORD' | translate}}.
+              </div> -->
+
+  <br /><br />
+  <div class="filter_section2">
+    <div style="margin-right: 12px; min-width: 112px; padding-bottom: 10px">
+      <b>{{ "TRANSACTION_TYPE" | translate }} </b>
+    </div>
+    <div class="date_filter_container">
+      <div
+        class="date_filter"
+        [ngClass]="transaction_selected == 1 ? 'active_filter' : ''"
+        (click)="transactionChange(1)"
+      >
+        {{ "DEPOSIT" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="transaction_selected == 2 ? 'active_filter' : ''"
+        (click)="transactionChange(2)"
+      >
+        {{ "WITHDRAW" | translate }}
+      </div>
+      <!--  -->
+      <div
+        class="date_filter"
+        [ngClass]="transaction_selected == 5 ? 'active_filter' : ''"
+        (click)="transactionChange(5)"
+      >
+        {{ "PURCHASED_PACKAGES" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="transaction_selected == 6 ? 'active_filter' : ''"
+        (click)="transactionChange(6)"
+      >
+        {{ "MY_BONUS" | translate }}
+      </div>
+    </div>
+  </div>
+  <div class="filter_section">
+    <div style="margin-right: 12px; min-width: 115px">
+      <b>{{ "FILTER_BY_DATE" | translate }} </b>
+    </div>
+    <div class="date_filter_container">
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 1 ? 'active_filter' : ''"
+        (click)="rangeChange(1)"
+      >
+        {{ "TODAY" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 2 ? 'active_filter' : ''"
+        (click)="rangeChange(2)"
+      >
+        {{ "YESTERDAY" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 7 ? 'active_filter' : ''"
+        (click)="rangeChange(7)"
+      >
+        {{ "LAST_7_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 30 ? 'active_filter' : ''"
+        (click)="rangeChange(30)"
+      >
+        {{ "LAST_30_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 60 ? 'active_filter' : ''"
+        (click)="rangeChange(60)"
+      >
+        {{ "LAST_60_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == 90 ? 'active_filter' : ''"
+        (click)="rangeChange(90)"
+      >
+        {{ "LAST_90_DAYS" | translate }}
+      </div>
+      <div
+        class="date_filter"
+        [ngClass]="range_selected == null ? 'active_filter' : ''"
+        (click)="rangeChange(null)"
+      >
+        {{ "ALL" | translate }}
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <div *ngIf="bonusList?.data?.items.length > 0" class="table_wrapper">
+    <table
+      id="usdtTable"
+      style="width: 100%; border-collapse: separate; border-spacing: 0 6px"
+    >
+      <tr>
+        <th (click)="updateSortBy('datetime')">
+          {{ "CREATED_AT" | translate }}
+          <ion-icon
+            [id]="'arrows_usdt_' + 'datetime'"
+            [name]="'caret-down-outline'"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('txn_ref')">
+          {{ "REFERENCE_NUMBER" | translate }}
+          <ion-icon
+            [id]="'arrows_usdt_' + 'txn_ref'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('txn_in')">
+          {{ "IN" | translate }}
+          <ion-icon
+            [id]="'arrows_usdt_' + 'txn_in'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('txn_out')">
+          {{ "OUT" | translate }}
+          <ion-icon
+            [id]="'arrows_usdt_' + 'txn_out'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('update_type_id')">
+          {{ "TRANSACTION_TYPE" | translate }}
+          <ion-icon
+            [id]="'arrows_usdt_' + 'update_type_id'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+        <th (click)="updateSortBy('remarks')">
+          {{ "REMARKS" | translate }}
+          <ion-icon
+            [id]="'arrows_usdt_' + 'remarks'"
+            [name]="'caret-up-outline'"
+            [hidden]="true"
+          ></ion-icon>
+        </th>
+      </tr>
+      <ng-container *ngIf="this.is_loading == false">
+        <tr *ngFor="let order of bonusList.data.items" class="table_row">
+          <td>
+            {{ order?.datetime.substring(0, 10) }}
+          </td>
+          <td>
+            {{ order?.txn_ref }}
+          </td>
+          <td>{{ numberWithCommas(order?.txn_in) }}</td>
+          <td>{{ numberWithCommas(order?.txn_out) }}</td>
+          <td>{{ getTxnType(order?.update_type_id) }}</td>
+          <td>{{ order?.remarks }}</td>
+          <!-- <div *ngIf="this.order.update_type == 'N/A'">
+                        <td>-</td>
+                    </div>
+                    <div *ngIf="this.order.update_type != 'N/A'">
+                        <td>{{ order?.update_type }}</td>
+                    </div> -->
+        </tr>
+      </ng-container>
+    </table>
+    <div *ngIf="this.bonusList?.data?.items.length == 0" class="table_wrapper">
+      <div style="text-align: center" class="table_row">
+        {{ "NO_DATA" | translate }}
+      </div>
+    </div>
+    <br />
+    <!-- <div *ngIf="this.bonusList.data.items.length > 0" class="pagination_container">
+    <div class="total_page">
+      {{ 'SHOWING' | translate }} <b>{{ this.entry }}</b> of <b>{{ totalEntry }}</b>
+    </div>
+    <div class="pagination">
+      <div class="pagination_cursor">
+        <ion-icon (click)="lessPage()" name="chevron-back-outline"></ion-icon>
+      </div>
+      <div [ngClass]="this.page == a ? 'active_pagination' : ''" *ngFor="let a of this.displayPages">{{ a }}</div>
+      <div class="pagination_cursor">
+        <ion-icon (click)="addPage()" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </div> -->
+  </div>
+  <div
+    *ngIf="bonusList?.data?.items?.length > 0; else noData"
+    class="pagination_container"
+  >
+    <div class="total_page">
+      {{ "SHOWING" | translate }}
+      <b
+        >{{ this.bonusList?.data?.current_item_position_start }} to
+        {{ this.bonusList?.data?.current_item_position_end }}</b
+      >
+      of
+      <b>{{ totalEntry }}</b>
+    </div>
+    <div class="pagination">
+      <div class="pagination_cursor">
+        <ion-icon (click)="lessPage()" name="chevron-back-outline"></ion-icon>
+      </div>
+      <div
+        (click)="changePage(a + 1)"
+        *ngFor="let pages of [].constructor(totalPages); let a = index"
+        [ngClass]="this.page == a + 1 ? 'active_pagination' : ''"
+      >
+        {{ a + 1 }}
+      </div>
+      <div class="pagination_cursor">
+        <ion-icon (click)="addPage()" name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <ng-template #noData class="table_wrapper">
+    <div style="text-align: center" class="table_row">
+      {{ "NO_DATA" | translate }}
+    </div>
+  </ng-template>
+  <div *ngIf="this.is_loading == true"></div>
+  <!-- to open up deposit usdt url -->
+  <ion-modal [isOpen]="!!paymentUrl">
+    <ng-template>
+      <div class="site_container" style="height: 100%">
+        <ion-toolbar>
+          <!-- <ion-title style="text-align: center; font-size: 25px;">Forget Password</ion-title> -->
+          <ion-buttons slot="end">
+            <ion-button slot="end" (click)="dismissModal()">
+              <ion-icon color="white" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <iframe
+          frameborder="0"
+          width="100%"
+          height="100%"
+          [src]="paymentUrl"
+        ></iframe>
+      </div>
+    </ng-template>
+  </ion-modal>
+  <!-- to open up deposit usdt form -->
+  <ion-modal
+    [isOpen]="!!isDepositOpen"
+    (ionModalDidDismiss)="dismissModal()"
+    class="formModal"
+  >
+    <ng-template>
+      <div class="site_container" style="height: 100%">
+        <ion-toolbar>
+          <!-- <ion-title style="text-align: center; font-size: 25px;">Forget Password</ion-title> -->
+          <ion-buttons slot="end">
+            <ion-button slot="end" (click)="dismissModal()">
+              <ion-icon color="white" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-row>
+          <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+            <div class="project_subtitle">
+              <b>{{ "DEPOSIT_USDT" | translate }}</b>
+            </div>
+            <br />
+            <ion-col sizeXs="12" sizeSm="12">
+              <form [formGroup]="form" (ngSubmit)="purchasePackage()">
+                <ion-item>
+                  <ion-label position="floating"
+                    >{{ "AMOUNT" | translate }}
+                    <span style="color: red">*</span></ion-label
+                  >
+                  <ion-input
+                    style="font-family: 'Source Sans Pro', sans-serif"
+                    required
+                    detail-none
+                    formControlName="bef_name"
+                  ></ion-input>
+                </ion-item>
+                <br /><br />
+                <button class="button_submit" type="submit">
+                  {{ "SUBMIT" | translate }}
+                </button>
+              </form>
+            </ion-col>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-template>
+  </ion-modal>
+  <ion-modal
+    [isOpen]="!!isWithdrawOpen"
+    (ionModalDidDismiss)="dismissModal()"
+    class="formModal"
+  >
+    <ng-template>
+      <div class="site_container" style="height: 100%">
+        <ion-toolbar>
+          <!-- <ion-title style="text-align: center; font-size: 25px;">Forget Password</ion-title> -->
+          <ion-buttons slot="end">
+            <ion-button slot="end" (click)="dismissModal()">
+              <ion-icon color="white" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-row>
+          <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+            <div class="project_subtitle">
+              <b>{{ "WITHDRAW_USDT" | translate }}</b>
+            </div>
+            <!-- <br /> -->
+            <ion-col sizeXs="12" sizeSm="12">
+              <form [formGroup]="usdtOTPForm" (ngSubmit)="withdrawUSDT()">
+                <ion-item>
+                  <ion-label position="floating"
+                    >{{ "WALLET_ADDRESS" | translate }}
+                    <span style="color: red">*</span></ion-label
+                  >
+                  <ion-input
+                    style="font-family: 'Source Sans Pro', sans-serif"
+                    required
+                    detail-none
+                    formControlName="wallet_address"
+                  ></ion-input>
+                </ion-item>
+                <div
+                  *ngIf="
+                    submitted && usdtOTPForm.controls.wallet_address.errors
+                  "
+                  class="validator-error"
+                >
+                  {{ "PASSWORD_NOT_MATCH" | translate }}
+                </div>
+                <ion-item>
+                  <ion-label position="floating"
+                    >{{ "AMOUNT" | translate }}
+                    <span style="color: red">*</span></ion-label
+                  >
+                  <ion-input
+                    style="font-family: 'Source Sans Pro', sans-serif"
+                    required
+                    detail-none
+                    formControlName="amount"
+                    type="number"
+                  ></ion-input>
+                </ion-item>
+                <div
+                  *ngIf="submitted && usdtOTPForm.controls.amount.errors"
+                  class="validator-error"
+                >
+                  {{ "PASSWORD_NOT_MATCH" | translate }}
+                </div>
+                <ion-item>
+                  <ion-label position="floating"
+                    >{{ "OTP_CODE" | translate }}
+                    <span style="color: red">*</span></ion-label
+                  >
+                  <ion-input
+                    style="font-family: 'Source Sans Pro', sans-serif"
+                    required
+                    detail-none
+                    max="6"
+                    (ionInput)="otpValueChange($event)"
+                  ></ion-input>
+                  <ion-button
+                    slot="end"
+                    class="otp_btn"
+                    (click)="requestOTP()"
+                    [disabled]="otpDisabled"
+                    id="otp_btn"
+                    >{{ "SEND_OTP" | translate }}
+                  </ion-button>
+                </ion-item>
+                <!-- <div class="passoword-requirement">
+                  <span style="padding-bottom: 3px"
+                    ><i> *{{ "WITHDRAW_USDT_TIPS" | translate }}.</i>
+                  </span>
+                </div> -->
+                <div class="passoword-requirement">
+                  <span
+                    ><i> *{{ "WITHDRAW_USDT_TIPS_PROMO" | translate }}.</i>
+                  </span>
+                </div>
+                <br /><br />
+                <button class="button_submit" type="submit">
+                  {{ "SUBMIT" | translate }}
+                </button>
+              </form>
+            </ion-col>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ng-template>
+  </ion-modal>
+</div>

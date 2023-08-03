@@ -1,0 +1,257 @@
+<div>
+    <div class="greetings_container">
+        <img class="profile_image" src="../../../assets/images/img-default-profile-pic.png" />
+        <div>
+            {{ "HI" | translate }} <span class="username">{{ first_name }}</span
+      >, {{ "WELCOME_BACK" | translate }}
+    </div>
+  </div>
+  <br />
+  <div class="footer_seperator"></div>
+  <br />
+  <ion-row>
+    <ion-col sizeXs="12" sizeMd="12" sizeLg="5">
+      <div class="package_title">
+        <b>{{ "PERSONAL_INFO" | translate }}</b>
+      </div>
+      <div class="info_container">
+        <div class="secondary-clm two_clm">
+          <div>{{ "INVITED_BY" | translate }}:</div>
+          <div>
+            <b>{{ userDetails?.temp_upline_username }}</b>
+          </div>
+        </div>
+        <div class="secondary-clm two_clm">
+          <div>{{ "JOINED" | translate }}:</div>
+          <div>
+            <b>{{ joinedDate | date: "d MMM YYYY" }}</b>
+          </div>
+        </div>
+        <div class="secondary-clm">
+          <div>{{ "USERNAME" | translate }}:</div>
+          <div style="text-overflow: ellipsis; overflow: hidden; white-space: pre">
+            <b>{{ userDetails?.username }}</b>
+          </div>
+        </div>
+        <div class="secondary-clm">
+          <div>{{ "MY_DIRECT_UPLINE" | translate }}:</div>
+          <div>
+            <b>{{ userDetails?.direct_upline ?? 'N/A' }}</b>
+          </div>
+        </div>
+        <div class="secondary-clm">
+          <div>{{ "MY_COMMUNITY_LEADER" | translate }}:</div>
+          <div>
+            <b>{{ userDetails?.my_community_leader ?? 'N/A' }}</b>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <br />
+    <ion-col sizeXs="12" sizeMd="12" sizeLg="7">
+        <div class="package_title">
+          <b>{{ "EARNINGS" | translate }}</b>
+        </div>
+        <div class="info_container">
+          <div class="earning-clm">
+          <div class="additional_clm">
+            <div class="max_earning_title">{{ "MAX_EARNINGS" | translate }} :</div>
+            <div>
+              <b>{{ numberWithCommas(userDetails?.max_earnings) }}</b>
+            </div>
+          </div>
+        </div>
+        <div class="earning-clm">
+          <div class="additional_clm">
+            <div class="max_earning_title">{{ "TOTAL_EARNINGS" | translate }} :</div>
+            <div>
+              <b>{{ numberWithCommas(userDetails?.total_earnings) }}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="referral-clm">
+        <div class="secondary_main_container">
+          <div class="package_title">
+            <b>{{ "MY_REFERRAL_LINK" | translate }}</b>
+          </div>
+          <div class="info">
+            <div class="info_container">
+              <div class="referral_container">
+                <div
+                  style="text-overflow: ellipsis; overflow: hidden; white-space: pre"
+                >
+                  {{ referralUrl }}
+                </div>
+                <div class="button_container">
+                  <div class="button_desc" (click)="copyString()">
+                    {{ "COPY" | translate }}
+                  </div>
+                  <div class="button_desc" (click)="presentActionSheet()">
+                    {{ "SHARE" | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="referral-clm my_status_clm">
+        <div class="secondary_main_container">
+          <div class="package_title">
+            <b>{{ "MY_STATUS" | translate}}</b>
+          </div>
+          <div class="info" style="background: none; padding: 0;">
+            <div class="info_container">
+              <div class="referral_container" style="background: none; padding: 0;">
+                <div class="status_container">
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 0 ? 'status_active' : ''"
+                  >
+                    {{ "FORESTER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 11 ? 'status_active' : ''"
+                  >
+                    {{ "1_STAR_FORESTER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 22 ? 'status_active' : ''"
+                  >
+                    {{ "2_STAR_FORESTER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 33 ? 'status_active' : ''"
+                  >
+                    {{ "3_STAR_FORESTER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 1 ? 'status_active' : ''"
+                  >
+                    {{ "1_STAR" | translate }}<br />
+                    {{ "RANGER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 2 ? 'status_active' : ''"
+                  >
+                    {{ "2_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 3 ? 'status_active' : ''"
+                  >
+                    {{ "3_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 4 ? 'status_active' : ''"
+                  >
+                    {{ "4_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 5 ? 'status_active' : ''"
+                  >
+                    {{ "5_STAR" | translate }}<br />{{ "RANGER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 6 ? 'status_active' : ''"
+                  >
+                    {{ "PARTNER" | translate }}
+                  </div>
+                  <div
+                    class="status"
+                    [ngClass]="userDetails?.rank == 7 ? 'status_active' : ''"
+                  >
+                    {{ "SENIOR_PARTNER" | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!-- <br />
+  <div class="package_title">
+    <b>{{ "MY_STATUS" | translate }}</b>
+  </div>
+  <br />
+  <div class="status_container">
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 0 ? 'status_active' : ''"
+    >
+      {{ "FORESTER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 11 ? 'status_active' : ''"
+    >
+      {{ "1_STAR_FORESTER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 22 ? 'status_active' : ''"
+    >
+      {{ "2_STAR_FORESTER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 33 ? 'status_active' : ''"
+    >
+      {{ "3_STAR_FORESTER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 1 ? 'status_active' : ''"
+    >
+      {{ "1_STAR" | translate }}<br />
+      {{ "RANGER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 2 ? 'status_active' : ''"
+    >
+      {{ "2_STAR" | translate }}<br />{{ "RANGER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 3 ? 'status_active' : ''"
+    >
+      {{ "3_STAR" | translate }}<br />{{ "RANGER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 4 ? 'status_active' : ''"
+    >
+      {{ "4_STAR" | translate }}<br />{{ "RANGER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 5 ? 'status_active' : ''"
+    >
+      {{ "5_STAR" | translate }}<br />{{ "RANGER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 6 ? 'status_active' : ''"
+    >
+      {{ "PARTNER" | translate }}
+    </div>
+    <div
+      class="status"
+      [ngClass]="userDetails?.rank == 7 ? 'status_active' : ''"
+    >
+      {{ "SENIOR_PARTNER" | translate }}
+    </div>
+  </div> -->
+</div>

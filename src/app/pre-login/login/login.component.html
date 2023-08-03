@@ -1,0 +1,265 @@
+<ion-content [fullscreen]="true">
+    <app-pre-navbar>
+        <div class="site_container">
+            <div class="home_container">
+                <div class="login_container">
+                    <div class="login_title">{{ "LOGIN" | translate }}</div>
+                    <div class="login_background_container">
+                        <form [formGroup]="form" (ngSubmit)="onLogin()">
+                            <ion-row>
+                                <ion-col sizeXs="12" sizeSm="12">
+                                    <ion-item lines="none;">
+                                        <ion-label position="floating">{{ "USERNAME_EMAIL" | translate }}
+                                            <span style="color: red">*</span></ion-label>
+                                        <ion-input formControlName="login"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.login.errors" class="validator-error">
+                                        {{ "VALID_USERNAME_EMAIL" | translate }}
+                                    </div>
+                                </ion-col>
+                                <ion-col sizeXs="12" sizeSm="12">
+                                    <ion-item>
+                                        <ion-label position="floating">{{ "PASSWORD" | translate }}
+                                            <span style="color: red">*</span></ion-label>
+                                        <ion-input type="password" formControlName="password"></ion-input>
+                                    </ion-item>
+                                    <div *ngIf="submitted && form.controls.password.errors" class="validator-error">
+                                        {{ "VALID_PASSWORD" | translate }}
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <br /><br />
+                            <ion-row>
+                                <ion-col sizeXs="12">
+                                    <div class="login_container" style="text-align: center">
+                                        <a id="forgot_password"><i>{{ "FORGET_PASSWORD" | translate }}</i></a
+                    >
+                  </div>
+                </ion-col>
+                <ion-col sizeXs="12">
+                  <button class="btn_login" type="submit">
+                    {{ "LOGIN" | translate }}
+                  </button>
+                  <div class="login_container">
+                    <a [routerLink]="['/r']"
+                      >{{ "DONT_HAVE_AN_ACCOUNT" | translate }}
+                      <span class="create_now">{{
+                        "CREATE_NOW" | translate
+                      }}</span></a
+                    >
+                  </div>
+                </ion-col>
+              </ion-row>
+            </form>
+          </div>
+        </div>
+        <ion-modal trigger="forgot_password" style="--min-height: 600px">
+          <ng-template>
+            <div class="site_container" style="padding-top: 0">
+              <div class="testing">
+                <ion-toolbar>
+                  <!-- <ion-title style="text-align: center; font-size: 25px;">Forget Password</ion-title> -->
+                  <ion-buttons slot="end">
+                    <ion-button slot="end" (click)="onDismiss()">
+                      <ion-icon color="white" name="close"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+                <ion-row>
+                  <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+                    <div class="project_subtitle">
+                      <b>{{ "FORGET_PASSWORD" | translate }}</b>
+                    </div>
+                    <br />
+                    <form
+                      [formGroup]="forgetpasswordform"
+                      (ngSubmit)="onForgetPassword()"
+                    >
+                      <ion-row>
+                        <ion-col sizeXs="12" sizeSm="12">
+                          <ion-item>
+                            <ion-label position="floating"
+                              >{{ "EMAIL" | translate
+                              }}<span style="color: red">*</span></ion-label
+                            >
+                            <ion-input
+                              type="email"
+                              formControlName="email"
+                            ></ion-input>
+                          </ion-item>
+                          <div
+                            *ngIf="
+                              submitforget &&
+                              forgetpasswordform.controls.email.errors
+                            "
+                            class="validator-error"
+                          >
+                            {{ "VALID_EMAIL" | translate }}
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col sizeXs="12" sizeSm="12">
+                          <ion-item>
+                            <ion-label position="floating"
+                              >{{ "OTP_CODE" | translate
+                              }}<span style="color: red">*</span></ion-label
+                            >
+                            <ion-input formControlName="otp_code"></ion-input>
+                          </ion-item>
+                          <div
+                            *ngIf="
+                              submitforget &&
+                              forgetpasswordform.controls.otp_code.errors
+                            "
+                            class="validator-error"
+                          >
+                            {{ "PLEASE_ENTER_A_VALID" | translate }}
+                          </div>
+                        </ion-col>
+                        <button
+                          type="button"
+                          class="resend_otp"
+                          (click)="otpCode()"
+                          *ngIf="otp_available"
+                        >
+                          <span> {{ "SEND_OTP" | translate }}</span>
+                        </button>
+                        <div
+                          style="font-family: 'Source Sans Pro', sans-serif"
+                          *ngIf="!otp_available"
+                        >
+                          {{ "RESEND_OTP_IN" | translate }} {{ timerLeft }}
+                        </div>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col sizeXs="12" sizeSm="6">
+                          <ion-item>
+                            <ion-label position="floating"
+                              >{{ "PASSWORD" | translate }}
+                              <span style="color: red">*</span></ion-label
+                            >
+                            <ion-input
+                              type="password"
+                              formControlName="password"
+                            >
+                            </ion-input>
+                          </ion-item>
+
+                          <div
+                            *ngIf="
+                              submitforget &&
+                              forgetpasswordform.controls.password.errors
+                            "
+                            class="validator-error"
+                          >
+                            {{ "VALID_PASSWORD" | translate }}
+                          </div>
+                        </ion-col>
+                        <ion-col sizeXs="12" sizeSm="6">
+                          <ion-item>
+                            <ion-label position="floating"
+                              >{{ "CONFIRM_PASS" | translate }}
+                              <span style="color: red">*</span></ion-label
+                            >
+                            <ion-input
+                              type="password"
+                              formControlName="password_confirm"
+                            >
+                            </ion-input>
+                          </ion-item>
+                          <div
+                            *ngIf="
+                              submitforget &&
+                              forgetpasswordform.controls.password_confirm
+                                .errors
+                            "
+                            class="validator-error"
+                          >
+                            {{ "PASSWORD_NOT_MATCH" | translate }}
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                      <div class="passoword-requirement">
+                        <span
+                          ><i
+                            >*{{ "MINIMUM_EIGHT_CHARACTER" | translate }}</i
+                          ></span
+                        >
+                      </div>
+                      <br /><br />
+                      <button class="button_submit" type="submit">
+                        {{ "SUBMIT" | translate }}
+                      </button>
+                    </form>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </div>
+          </ng-template>
+        </ion-modal>
+        <!-- <img class="forest_gif" src="../../../assets/images/forest.gif" />
+                <div class="empty_space"></div>
+                <img src="../../assets/images/Forest.png">
+                <ion-row>
+                    <ion-col sizeMd="10" offsetMd="1" sizeLg="10" offsetLg="1" sizeXs="12">
+                        <div class="empty_space"></div>
+                        <div class="project_title">
+                            <div class="dash">e</div>
+                            Forest
+                        </div>
+
+                        <div class="form_container">
+                            <div class="project_subtitle">Login Page</div>
+                            <br /><br />
+                            <form [formGroup]="form" (ngSubmit)="onLogin()">
+                                <ion-row>
+                                    <ion-col sizeXs="12" sizeSm="6">
+                                        <ion-item>
+                                            <ion-label position="floating">Username/Email</ion-label>
+                                            <ion-input formControlName="login"></ion-input>
+                                        </ion-item>
+                                        <div *ngIf="submitted && form.controls.login.errors" class="validator-error">
+                                            Please enter a valid username/email.
+                                        </div>
+                                    </ion-col>
+                                    <ion-col sizeXs="12" sizeSm="6">
+                                        <ion-item>
+                                            <ion-label position="floating">Password</ion-label>
+                                            <ion-input type="password" formControlName="password"></ion-input>
+                                        </ion-item>
+                                        <div *ngIf="submitted && form.controls.password.errors" class="validator-error">
+                                            Please enter a valid password.
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                                <br /><br />
+                                <ion-row>
+                                    <ion-col sizeXs="12">
+                                        <div class="login_container" style="text-align: right">
+                                            <a id="forgot_password">Forget Password</a>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                            <button class="yellow_button" type="submit">Login</button>
+                            <div class="login_container">
+                                <a [routerLink]="['/r']">Do not have an account? Register here</a
+                  >
+                </div>
+              </form>
+            </div>
+
+          </ion-col>
+        </ion-row>
+        <div class="empty_space"></div>
+        <div>
+        <img
+          style="margin-bottom: -4px"
+          src="../../assets/images/e-forest-website-footer-with-text.png"
+        />
+        </div> -->
+      </div>
+      <br /><br />
+    </div>
+  </app-pre-navbar>
+</ion-content>

@@ -1,0 +1,75 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+</ion-content> -->
+
+<ion-content [fullscreen]="true">
+    <app-pre-navbar>
+        <div class="site_container">
+            <div class="home_container">
+                <div class="login_container">
+                    <div class="login_title">OTP
+                        <br>
+                        <div class="title_desc">{{'CHECK_EMAIL_FOR_OTP'| translate}} </div>
+                    </div>
+                    <div class="login_background_container">
+
+                        <ion-row>
+                            <ion-col sizeLg="10" offsetLg="1" sizeXs="12">
+                                <form [formGroup]="form" (ngSubmit)="sendOTP()">
+                                    <ion-row>
+                                        <ion-col sizeXs="12" sizeSm="6" offsetSm="3">
+                                            <ion-item>
+                                                <ion-label position="floating">{{ 'OTP_CODE' | translate }}</ion-label>
+                                                <ion-input formControlName="otp_code"></ion-input>
+                                            </ion-item>
+                                            <div *ngIf="submitted && form.controls.otp_code.errors" class="validator-error">
+                                                {{ 'PLEASE_ENTER_A_VALID' | translate }}
+                                            </div>
+                                            <br>
+                                            <div style="text-align: start;">
+                                                <button type="button" class="resend_otp" (click)="resendOTP()" *ngIf="otp_available">
+                                      <span >{{ 'RESEND_OTP' | translate }}</span>
+                                    </button>
+                                                <div class="resend_otpCountdown" *ngIf="!otp_available">{{ 'RESEND_OTP_IN' | translate }} {{timerLeft}}
+                                                    <br>
+
+                                                </div>
+
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <button class="btn_login" type="submit">
+                                      {{ 'SUBMIT' | translate }}
+                                    </button>
+                                        </ion-col>
+                                    </ion-row>
+                                    <br>
+
+                                </form>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </app-pre-navbar>
+
+</ion-content>
